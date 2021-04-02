@@ -1,0 +1,45 @@
+//------------------------------
+// File Name   : _variables.scss
+// Description : 関数
+//------------------------------
+
+// colors
+// -------------------------
+$black: #050505;
+$grey: #9B9B9B;
+$pink: #E618E2;
+$w-blue: #1CEEF7;
+$blue: #132EFC;
+
+$grada1: linear-gradient(to right, #1ceef7 0%, #f854c6 100%);
+$grada2: linear-gradient(#56ff22 0%, #f06c45 100%);
+
+
+// font
+// -------------------------
+$noto-sans: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+$Questrial: "Questrial", sans-serif;
+
+// fontSize
+// -------------------------
+$fontSizeSS: 1.2rem;
+$fontSizeS: 1.4rem;
+$fontSizeR: 1.6rem;
+$fontSizeM: 2.2rem;
+$fontSizeL: 2.6rem;
+$fontSizeLL: 3.2rem;
+
+// fontSize
+// -------------------------
+$light: 300;
+$regular: 400;
+$medium: 500;
+
+// cont
+// -------------------------
+
+$dkt: 1432px; // desktop
+$dkt-wrap: 980px; // desktop
+$tab: 1024px; // tablet
+$sp: 767px;  // sp
+$sp-wrap: calc(100% - 60px);

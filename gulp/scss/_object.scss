@@ -1,0 +1,120 @@
+//------------------------------
+// File Name   : _object.scss
+// Description : パーツなどのスタイル
+//------------------------------
+
+@use 'variables';
+
+/* -----------------------------------------------------
+ body
+----------------------------------------------------- */
+
+body {
+    &.l-home {
+        background: $grada1;
+    }
+    &.l-works_post {
+        background: $grada2;
+    }
+}
+
+/* -----------------------------------------------------
+ .l-ttl　タイトル・ヘッダー
+----------------------------------------------------- */
+
+.ttl_white {
+    position: relative;
+    z-index: 1;
+    &:after {
+        position: absolute;
+        content: '';
+        background: #fff;
+        left: 0;
+        top: 0;
+        width: calc(100% + 11px);
+        height: 100%;
+        filter: blur(3px);
+        z-index: 0;
+        @include tab {
+            left: -7px;
+            width: calc(100% + 14px);
+        }
+    }
+}
+.ttl_name {
+    position: relative;
+    z-index: 1;
+    padding-left: 7px;
+}
+
+.l-ttl {
+    &_main {
+        a {
+            display: inline-block;
+            font-size: 4rem;
+            letter-spacing: 0.08em;
+            line-height: 1;
+            @include tab {
+                display: block;
+                font-size: 3rem;
+                text-align: center;
+            }
+        }
+    }
+    &_02 {
+        font-size: 2.4rem;
+        line-height: 1;
+        display: inline-block;
+        margin-bottom: 22px;
+        @include tab {
+            font-size: 2.1rem;
+            margin-bottom: 40px;
+        }
+        .ttl_white {
+            &:after {
+                width: calc(100% + 12px);
+            }
+            &:before {
+                position: absolute;
+                content: '';
+                width: 20px;
+                height: 17px;
+                right: -21px;
+                bottom: 50%;
+                margin-bottom: -16.5px;
+                background: url(../../../assets/imgs/common/chevron-double-down_pink.svg) no-repeat left top / contain;
+                z-index: 1;
+            }
+        }
+        &.ttl-works {
+            color: $pink; 
+        }
+        &.ttl-skills {
+            color: $w-blue;
+        }
+        &.ttl-history {
+            color: $pink;
+        }
+        
+    }
+}
+
+/* -----------------------------------------------------
+ .l-wrap ラッパー
+----------------------------------------------------- */
+
+.l-wrap {
+
+    &_01 {
+        max-width: $dkt-wrap;
+        width: 100%;
+        margin: 0 auto 4rem;  
+        @include tab {
+            max-width: $sp-wrap;
+        }      
+    }
+}
+
+/* -----------------------------------------------------
+ .l-btn　ボタン
+----------------------------------------------------- */

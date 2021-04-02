@@ -1,0 +1,145 @@
+// //------------------------------
+// // File Name   : _news.scss
+// // Description : お知らせスタイル
+// //------------------------------
+
+@use 'variables';
+
+
+.l-works {
+    
+    /* -----------------------------------------------------
+     .l-works_list
+    ----------------------------------------------------- */
+
+    &_list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 15px;
+        row-gap: 4rem;
+
+        @include tab {
+            grid-template-columns: 1fr;
+        }
+
+        &_item {
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                filter: blur(2px);
+            }
+            @include tab {
+                margin-bottom: 20px;
+            }
+            > a {
+                display: grid;
+                grid-template-rows: 183px auto auto;
+                gap: 1.5rem;
+                height: 100%;
+                padding: 25px 25px 25px 25px;
+                border-radius: 3px; 
+                position: relative;
+                @include tab {
+                    grid-template-rows: auto auto auto;                
+                }
+                &:before {
+                    content: '';
+                    position: absolute;
+                    background: url(../../../assets/imgs/common/arw_work_right_pink.svg) no-repeat left top / contain;
+                    right: 20px;
+                    bottom: 0;
+                    width: 46px;
+                    height: 26px;
+                    border-radius: 3px; 
+                    transition: all .3s;
+                }
+                &:hover {
+                    &:before {
+                        transform: translateX(20px) scale(1.2);
+                    }
+                }
+                .l-works_ttl {
+                    grid-row: 2 / span 1;
+                }
+                .l-works_fig {
+                    grid-row: 1 / span 1;
+                    position: relative;
+                    text-align: center;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        left: -1px;
+                        top: -1px;
+                        width: calc(100% + 2px);
+                        height: calc(100% + 2px);
+                        background: $grada1;
+                        filter: blur(3px);
+                    }
+                    img {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .l-works_tags_list {
+                    grid-row: 3 / span 1;
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-top: auto;
+                    &_item {
+                        font-size: 1.4rem;
+                        margin-right: 5px;
+                        color: $grey;
+                    }
+                }
+            }
+        }
+    }
+    
+    /* -----------------------------------------------------
+     .l-works_post
+    ----------------------------------------------------- */
+
+    &_post {
+        width: $dkt-wrap;
+        margin: 0 auto;
+
+        &_ttl {
+            text-align: center;
+            margin-bottom: 13rem;
+            .ttl_white {
+                font-size: 3.2rem;
+                letter-spacing: .06em;
+                line-height: 1.5;
+            }
+        }
+
+        &_info {
+            background: #fff;
+            border-radius: 35px;
+            padding: 60px;
+        }
+
+        &_url {
+            font-size: 2.6rem;
+            > a {
+                color: $blue;
+            }
+        }
+        
+        &_tags {
+            &_list {
+                display: flex;
+                color: $grey;
+                &_item {
+                    margin-right: 25px;
+                }
+            }
+        }
+    }
+}

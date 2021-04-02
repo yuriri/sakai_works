@@ -1,0 +1,86 @@
+//------------------------------
+// File Name   : _common.scss
+// Description : 全般スタイル
+//------------------------------
+
+@use 'variables';
+
+/* -----------------------------------------------------
+ 調整
+----------------------------------------------------- */
+
+.l-sp-only {
+    display: none;
+    @include sp {
+        display: block;
+    }
+}
+.l-tab-only {
+    display: none;
+    @include tab {
+        display: block;
+    }
+}
+.l-dt-only {
+    display: block;
+    @include tab {
+        display: none;
+    }
+}
+
+@for $i from 1 through 9 {
+
+    .mb-#{$i}0 {
+        margin-bottom: #{$i}0px;
+    }
+
+    .mt-#{$i}0 {
+        margin-top: #{$i}0px;
+    }
+    
+    .ml-#{$i}0 {
+        margin-left: #{$i}0px;
+    }
+    
+    .mr-#{$i}0 {
+        margin-right: #{$i}0px;
+    }    
+
+}  
+
+.img_blank {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    max-width: none;
+}
+
+/* -----------------------------------------------------
+ .l-hdr ヘッダー
+----------------------------------------------------- */
+
+.l-hdr {
+    max-width: $dkt-wrap;
+    width: 100%;
+    margin: 0 auto;
+    padding: 77px 0 90px;
+    @include tab {
+        padding: 35px 0 60px;
+        max-width: $sp-wrap;
+    }
+}
+
+/* -----------------------------------------------------
+ .l-ftr フッター
+----------------------------------------------------- */
+
+.l-ftr {
+    text-align: center;
+    padding: 120px 0 80px;
+    @include tab {
+        padding: 60px 0 40px;
+    }
+    small {
+        font-size: 1.4rem;
+    }
+}

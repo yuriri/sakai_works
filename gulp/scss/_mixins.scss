@@ -1,0 +1,148 @@
+//------------------------------
+// File Name   : _mixins.scss
+// Description : ミックスイン
+//------------------------------
+
+@use 'variables';
+
+@mixin center {
+	display: block;
+	margin: 0 auto;
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// nth
+
+@mixin even(){
+    &:nth-child(even) {
+      @content;
+    }
+}
+
+@mixin odd(){
+    &:nth-child(odd) {
+      @content;
+    }
+}
+
+@mixin eventype(){
+    &:nth-of-type(even) {
+      @content;
+    }
+}
+
+@mixin oddtype(){
+    &:nth-of-type(odd) {
+      @content;
+    }
+}
+
+@mixin last {
+    &:last-child {
+      @content;
+    }
+}
+
+@mixin last-of-type {
+    &:last-of-type {
+      @content;
+    }
+}
+
+@mixin first-to($num) {
+	&:nth-of-type(-n + #{$num}) {
+      @content;
+    }
+}
+
+@mixin from-last($num) {
+	&:nth-last-of-type(-n + #{$num}) {
+      @content;
+    }
+}
+
+@mixin not-last {
+    &:not(:last-of-type) {
+      @content;
+    }
+}
+
+@mixin first($num) {
+	@if $num == 1 {
+		&:first-child {
+			@content;
+		}
+	}
+	@else {
+		&:nth-child(#{$num}) {
+			@content;
+		}
+	}
+}
+
+@mixin firsttype($num) {
+	@if $num == 1 {
+		&:first-of-type {
+			@content;
+		}
+	}
+	@else {
+		&:nth-of-type(#{$num}) {
+			@content;
+		}
+	}
+}
+
+@mixin not-first {
+    &:not(:first-of-type) {
+      @content;
+    }
+}
+
+// responsive
+
+@mixin tab {
+	@media screen and (max-width: $tab) {
+		@content;
+	}
+}
+
+@mixin sp {
+	@media screen and (max-width: $sp) {
+		@content;
+	}
+}
+
+@mixin dkt {
+	@media screen and (min-width: $dkt) {
+		@content;
+	}
+}
+
+// animation
+
+@keyframes active-menu-ber03 {
+    0% {
+      transform: translateY(0) rotate(0);
+    }
+    50% {
+      transform: translateY(-8px) rotate(0);
+    }
+    100% {
+      transform: translateY(-18px) rotate(-45deg);
+    }
+}
+
+@keyframes hdrFix {
+	0% {
+		transform: translateY(-100%)
+	}
+		100% {
+		transform: translateY(0)
+	}
+}
