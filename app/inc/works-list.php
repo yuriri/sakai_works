@@ -1,7 +1,9 @@
 <!-- /.l-wrap_01 .m-works -->
 <article class="l-wrap_01 m-works">
 
-    <h2 class="l-ttl_02 ttl-works"><span class="ttl_white"><span class="ttl_name">WORKS</span></span></h2>
+    <h2 class="l-ttl_02 ttl-works">WORKS</h2>
+
+    <p class="l-btn_viewall"><a href="">VIEW ALL</a></p>
 
     <?php 
         $args = array(
@@ -50,6 +52,8 @@
     </ul>
     <?php endif; wp_reset_postdata(); ?>
     <!-- /.l-works_list -->
+
+    <p class="l-btn_viewall"><a href="">VIEW ALL</a></p>
 
 </article>
 <!-- /.l-wrap_01 .m-works -->

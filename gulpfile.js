@@ -13,18 +13,18 @@ let path = {
 // ----------------------------
 
 // Sassをコンパイルするプラグインの読み込み
-const sass = require("gulp-sass");
+const sass = require('gulp-sass');
 sass.compiler = require('sass');
 
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-// const plumber = require("gulp-plumber");
+const postcss = require('gulp-postcss');
+const plumber = require('gulp-plumber');
+const autoprefixer = require('autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 
 gulp.task('sass', function (done) {
     // .scssファイルを取得
     gulp.src('gulp/**/*.scss')
-        // .pipe(plumber())
+        .pipe(plumber())
         // sassのコンパイルを実行、error以降Sassのコンパイルエラーを表示(これがないと自動的に止まってしまう)
         .pipe(sass({ outputStyle: 'expanded' }))
         .pipe(postcss([

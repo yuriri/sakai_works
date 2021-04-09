@@ -23,6 +23,7 @@
 	<meta name="twitter:card" content="summary" />	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Questrial&display=swap" rel="stylesheet">	
+	<link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Codystar:wght@300;400&family=Raleway:ital,wght@0,100;1,100;1,200&display=swap" rel="stylesheet">	
 	<?php wp_head(); ?>
 </head>
 
@@ -30,11 +31,39 @@
 
 	<!-- .l-hdr -->
 	<header class="l-hdr">
-		<h1 class="l-ttl_main">
-			<a href="<?php echo esc_url( home_url('/') ); ?>">
-				<span class="ttl_white"><span class="ttl_name"><?php bloginfo(); ?></span></span>
-			</a>
-		</h1>
+
+		<section class="l-hdr_inr">
+		
+			<section class="l-hdr_item">
+				<h1 class="l-ttl_01">
+					<a href="<?php echo esc_url( home_url('/') ); ?>">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/logo.svg" alt="<?php echo bloginfo('discription'); ?>">
+					</a>
+				</h1>
+				<p class="l-hdr_mail">yusasabi@gmail.com</p>
+			</section>
+			<!-- /.l-hdr_item -->
+
+			<section class="l-hdr_item">
+
+				<!-- .l-hdr-nav -->
+				<?php wp_nav_menu(
+					array(
+						'theme_location' => 'top-menu',
+						'container'  => 'nav',
+						'container_class' => 'l-hdr-nav',
+						'items_wrap' => '<ul class="l-hdr-nav__list">%3$s</ul>',
+						'menu_class' => 'l-hdr-nav__list__item'
+					)
+				); ?>   
+				<!-- /.l-hdr-nav -->  		
+
+			</section>
+			<!-- /.l-hdr_item -->
+
+		</section>
+		<!-- /.l-hdr_inr -->
+
 	</header>
 	<!-- /.l-hdr -->
 

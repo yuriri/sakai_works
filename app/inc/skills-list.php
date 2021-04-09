@@ -1,8 +1,7 @@
+<!-- /.m-skills -->
+<article class="m-skills">
 
-<!-- /.l-wrap_01 .m-skills -->
-<article class="l-wrap_01 m-skills">
-
-    <h2 class="l-ttl_02 ttl-skills"><span class="ttl_white"><span class="ttl_name">SKILSS</span></span></h2>
+    <h2 class="l-ttl_02 ttl-skills">SKILSS</h2>
 
     <?php 
         $args = array(
@@ -57,4 +56,4 @@
     <?php endforeach; ?> 
             
 </article>
-<!-- /.l-wrap_01 .m-skills -->
+<!-- /.m-skills -->

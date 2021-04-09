@@ -60,13 +60,17 @@
 ----------------------------------------------------- */
 
 .l-hdr {
-    max-width: $dkt-wrap;
     width: 100%;
     margin: 0 auto;
-    padding: 77px 0 90px;
+    padding: 35px 0;
     @include tab {
         padding: 35px 0 60px;
-        max-width: $sp-wrap;
+    }
+    &_inr {
+        max-width: $dkt-wrap;
+        @include tab {
+            max-width: $sp-wrap;
+        }
     }
 }
 
