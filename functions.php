@@ -13,17 +13,29 @@ function theme_enqueue_styles() {
 
 }
 
-
 // ----------------------------
 //  管理画面項目設定
 // ----------------------------
 
-// 項目を削除
+// 投稿項目を削除
 function remove_menus () {
     global $menu;
     unset($menu[5]);  // 投稿
 }
-add_action('admin_menu', 'remove_menus');    
+add_action('admin_menu', 'remove_menus');   
+
+//カスタム投稿の一覧にカテゴリを表示
+function add_custom_column( $defaults ) {
+    $defaults['skills_post_cat'] = 'カテゴリー';
+    return $defaults;
+  }
+  add_filter('manage_skills_post_posts_columns', 'add_custom_column');
+    function add_custom_column_id($column_name, $id) {
+      if( $column_name == 'skills_post_cat' ) {
+      echo get_the_term_list($id, 'skills_post_cat', '', ', ');
+    }
+  }
+  add_action('manage_skills_post_posts_custom_column', 'add_custom_column_id', 10, 2);
 
 // ----------------------------
 //  カスタムメニュー設定
@@ -114,7 +126,10 @@ function custom_post_type() {
     $Supports02 = [
         'title',
         'editor',
-    ];    
+    ]; 
+    $Supports03 = [
+        'title',
+    ];        
 
     // 自己紹介
     register_post_type( 'about',
@@ -169,7 +184,7 @@ function custom_post_type() {
             'has_archive' => true,
             'hierarchical' => false,
             'menu_position' => 5, 
-            'supports' => $Supports02,
+            'supports' => $Supports03,
         )
     );
     
@@ -188,7 +203,7 @@ function custom_post_type() {
             'has_archive' => true,
             'hierarchical' => false,
             'menu_position' => 5, 
-            'supports' => $Supports,
+            'supports' => $Supports03,
         )
     );    
 
@@ -270,6 +285,15 @@ function my_tiny_mce_before_init( $init_array ) {
     return $init_array;
 }
 add_filter( 'tiny_mce_before_init' , 'my_tiny_mce_before_init' );
+
+// ----------------------------
+//  メデイアライブラリでSVGファイルを表示させる
+// ----------------------------
+
+add_filter( 'manage_media_columns', function( $columns ) {
+    echo '<style>.media-icon img[src$=".svg"]{width:100%;}</style>';
+    return $columns;
+} );
 
 // ----------------------------
 //  ページャーの設定
