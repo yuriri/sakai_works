@@ -1,0 +1,49 @@
+// //------------------------------
+// // File Name   : _skills.scss
+// // Description : スキルスタイル
+// //------------------------------
+
+@use 'variables';
+
+.l-skills {
+    
+    &_container {
+       border: 2px solid hotpink;
+       margin: 20px;
+       padding: 20px;
+    }
+
+    &_term {
+       color: #fff;
+       background: hotpink;
+       margin-bottom: 20px;
+       padding: 10px 20px;
+    }
+
+    &_term-child {
+
+        &_block {
+            border: 2px solid blue;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        &_ttl {
+            background: palegreen;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+    }
+
+    &_list {
+       
+        &_item {
+            &_name {
+                color: hotpink;
+                margin-bottom: 10px;
+            }
+        }
+
+    }
+    
+}
