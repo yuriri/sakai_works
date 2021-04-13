@@ -1,7 +1,11 @@
 <!-- /.l-skills -->
-<article class="l-skills">
+<article class="l-skills" id="scr-skills">
 
-    <h2 class="l-ttl_02 ttl-skills">SKILSS</h2>
+    <!-- .l-skills_ttl_wrap -->
+    <section class="l-skills_ttl_wrap">
+        <h2 class="l-ttl_02 l-skills_ttl">SKILSS</h2>
+    </section>
+    <!-- /.l-skills_ttl_wrap -->
 
     <!-- .l-skills_box -->
     <section class="l-skills_box">
@@ -41,7 +45,7 @@
                                 <!-- .l-skills_term-child_block -->
                                 <article class="l-skills_term-child_block">
 
-                                    <h4 class="l-skills_term-child_ttl"><?php echo $termC->name; ?></h4>
+                                    <h4 class="l-skills_term-child_ttl">#<?php echo $termC->name; ?></h4>
 
                                     <ul class="l-skills_list">
             
@@ -66,14 +70,33 @@
                                                     $title = get_the_title();
                                                     $level = get_field('level');
                                                     $years = get_field('years');    
+                                                    $icon = get_field('icon');    
+                                                    $note = get_field('note');    
                                                 ?>
                 
                                                     <li class="l-skills_list_item">
                                                         <h4 class="l-skills_list_item_name"><?php echo $title; ?></h4>
-                                                        <p class="l-skills_list_item_level">レベル：<?php echo $level; ?></p>
-                                                        <p class="l-skills_list_item_years">年数：<?php echo $years; ?></p>
+                                                        <p class="l-skills_list_item_icon">
+                                                            <?php if($icon): ?>
+                                                                <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
+                                                            <?php else: ?>
+                                                            <?php endif; ?>
+                                                        </p>
+                                                        <?php if($level || $years || $note) : ?>                          
+                                                            <section class="l-skills_list_item_parts">
+                                                                <?php if($level): ?>
+                                                                    <p class="l-skills_list_item_level">レベル：<?php echo $level; ?></p>
+                                                                <?php endif; ?>
+                                                                <?php if($years): ?>
+                                                                    <p class="l-skills_list_item_years">年数：<?php echo $years; ?></p>
+                                                                <?php endif; ?>
+                                                                <?php if($note): ?>
+                                                                    <p class="l-skills_list_item_note">備考：<?php echo $note; ?></p>
+                                                                <?php endif; ?>
+                                                            </section>
+                                                            <!-- /.l-skills_list_item_parts -->        
+                                                        <?php endif; ?>
                                                     </li>
-                                    
                                                 <?php
                                                 endwhile;
                                             endif;
@@ -88,6 +111,8 @@
                     else: 
                     // 子タームが無い場合    
                 ?>
+                <!-- .l-skills_term-child_block -->
+                <article class="l-skills_term-child_block">                
                     <ul class="l-skills_list">
                         
                         <?php
@@ -111,11 +136,30 @@
                                     $title = get_the_title();
                                     $level = get_field('level');
                                     $years = get_field('years');    
+                                    $icon = get_field('icon');    
                                 ?>
                                     <li class="l-skills_list_item">
                                         <h4 class="l-skills_list_item_name"><?php echo $title; ?></h4>
-                                        <p class="l-skills_list_item_level">レベル：<?php echo $level; ?></p>
-                                        <p class="l-skills_list_item_years">年数：<?php echo $years; ?></p>
+                                        <p class="l-skills_list_item_icon">
+                                            <?php if($icon): ?>
+                                                <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
+                                            <?php else: ?>
+                                            <?php endif; ?>
+                                        </p>
+                                        <?php if($level || $years || $note) : ?>                          
+                                            <section class="l-skills_list_item_parts">
+                                                <?php if($level): ?>
+                                                    <p class="l-skills_list_item_level">レベル：<?php echo $level; ?></p>
+                                                <?php endif; ?>
+                                                <?php if($years): ?>
+                                                    <p class="l-skills_list_item_years">年数：<?php echo $years; ?></p>
+                                                <?php endif; ?>
+                                                <?php if($note): ?>
+                                                    <p class="l-skills_list_item_note">備考：<?php echo $note; ?></p>
+                                                <?php endif; ?>
+                                            </section>
+                                            <!-- /.l-skills_list_item_parts -->        
+                                        <?php endif; ?>
                                     </li>                                
                                 <?php
                                 endwhile;
@@ -123,6 +167,8 @@
                         wp_reset_postdata();
                         ?>                                
                     </ul>
+                </article>
+                <!-- /.l-skills_term-child_block -->                    
 
                 <?php endif; ?>  
     

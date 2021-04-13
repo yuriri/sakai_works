@@ -55,21 +55,119 @@
     max-width: none;
 }
 
+// トップページのスクロールスナップ調整
+.l-fullPageScroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;  
+    scroll-snap-stop: always;
+    height: 100vh;
+}
+.l-home_hero,
+.l-about {
+    scroll-snap-align: start;  
+    height: 100vh;
+}
+
 /* -----------------------------------------------------
  .l-hdr ヘッダー
 ----------------------------------------------------- */
 
 .l-hdr {
+
     width: 100%;
     margin: 0 auto;
-    padding: 35px 0;
+    padding: 20px 0;
+    opacity: 0;
+    position: fixed;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+    transition-duration: .3s;
+    &.js-show {
+        opacity: 1;
+    }
+
     @include tab {
-        padding: 35px 0 60px;
+        padding: 15px 0; 
     }
     &_inr {
         max-width: $dkt-wrap;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
         @include tab {
             max-width: $sp-wrap;
+        }
+    }
+    &_item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include tab {
+            display: block;
+        }
+        &_logo {
+            justify-self: flex-start;
+            a {
+                display: block;
+                svg {
+                    width: 110px;
+                    height: 110px;
+                    transition-duration: .2s;         
+                    g {
+                        transition-duration: .4s;         
+                        > path {
+                            transition-duration: .2s;         
+                        }
+                    }
+                }
+                &:hover {
+                    svg {
+                        fill: #fff;
+                        g {
+                            fill: url(#g0);
+                            stroke: #f854c6;
+                            > path {
+                                stroke: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &_nav {
+            justify-self: center;
+        }
+    }
+    &_mail {
+        font-family: $Raleway;
+        font-size: 2rem;
+        @include tab {
+            font-size: 1.6rem;
+        } 
+    }
+    &_nav {
+        &_list {
+            display: flex;
+            margin-left: -40px;
+            @include tab {
+                display: block;
+                margin-left: 0;
+            }
+            li {
+                padding-left: 40px;
+                @include tab {
+                    padding-left: 0;
+                }
+                > a {
+                    display: flex;
+                    font-family: $Codystar;
+                    font-size: 3rem;
+                    @include tab {
+                        font-size: 2rem;
+                    }
+                }
+            }
         }
     }
 }
@@ -79,12 +177,153 @@
 ----------------------------------------------------- */
 
 .l-ftr {
-    text-align: center;
-    padding: 120px 0 80px;
+
+    padding: 90px 0;
+    border-top: 1px solid #000;
     @include tab {
-        padding: 60px 0 40px;
+        padding: 30px 0 60px;
     }
-    small {
-        font-size: 1.4rem;
+
+    &_inr {
+        max-width: $dkt-wrap;
+        margin: 0 auto;
+        display: flex;
+        @include tab {
+            max-width: $sp-wrap;
+            display: block;
+        }
+    }
+
+    &_logo {
+        margin-right: 70px;
+        @include tab {
+            text-align: center;
+            margin-right: 0;
+            margin-bottom: 25px;
+        }
+        > a {
+            display: block;
+            svg {
+                width: 110px;
+                height: 110px;
+                transition-duration: .2s;         
+            }
+            &:hover {
+                svg {
+                    fill: #fff;
+                    g {
+                        fill: url(#g1);
+                        stroke: #ffc74a;
+                        > path {
+                            stroke: #fff;
+                        }
+                    }
+                }
+            }            
+        }
+    }
+    &_name {
+        margin-bottom: 25px;
+        @include tab {
+            text-align: center;
+        }
+        &_01 {
+            font-family: $ASL;
+            font-size: 3.6rem;
+            margin-right: 30px;
+            @include tab {
+                display: block;
+                margin-bottom: 32px;
+                margin-right: 0;
+            }
+        }
+        &_02 {
+            font-family: $Raleway;
+            font-size: 3rem;
+            @include tab {
+                display: block;
+            }
+        }
+    }
+    &_mail {
+        font-family: $Raleway;
+        font-size: 2.4rem;
+        margin-bottom: 38px;
+        @include tab {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+    }
+    &_sns {
+        &_list {
+            li {
+                margin-bottom: 6px;
+                @include tab {
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+                > a {
+                    font-family: $Codystar;
+                    font-size: 1.6rem;
+                    padding-left: 10px;
+                    position: relative;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        margin-top: -.5px;
+                        width: 5px;
+                        height: 1px;
+                        background: #000;
+                    }
+                    @include tab {
+                        font-size: 2rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    &_item {
+        &_menu {
+            margin-left: auto;
+        }
+    }
+    &-nav {
+        height: 100%;
+        &__list {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;   
+            align-items: flex-end;    
+            @include tab {
+                align-items: center;
+            }                 
+            li {
+                @for $i from 9 through 1 {
+                    @include first(#{$i}) {
+                        padding-right: $i * 20px;
+                    }
+                }
+                @include tab {
+                    @for $i from 9 through 1 {
+                        @include first(#{$i}) {
+                            padding-right: 0;
+                        }
+                    }
+                }
+                a {
+                    font-family: $Codystar;
+                    font-size: 2rem;
+                    @include tab {
+                        justify-content: center;
+                        text-align: center;
+                        font-size: 3rem;
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,178 @@
+// //------------------------------
+// // File Name   : _history.scss
+// // Description : HISTORYスタイル
+// //------------------------------
+
+@use 'variables';
+
+.l-history {
+
+    padding-top: 120px;
+    margin-bottom: 0;
+    @include tab {
+        padding-top: 34px;
+    }
+
+    &_ttl {
+        margin-bottom: 0;
+        width: 55%;
+        @include tab {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        > span {
+            display: block;
+            color: #fff;
+            background: #f06c45;
+            padding: 0 17px;
+            text-align: center;
+            font-size: 12rem;
+            letter-spacing: .12em;
+            line-height: 1;
+            width: 100%;
+            @include tab {
+                display: block;
+                font-size: 5rem;
+                padding: 2px 0;
+            }
+        }
+    }
+
+    &_timeline {
+        position: relative;
+        padding: 40px 0 180px;
+        @include tab {
+            padding: 20px 0 40px;
+        }
+        &:before {
+            position: absolute;
+            content: '';
+            width: 5px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            margin-left: -2.5px;
+            background-color: $orange;
+            @include tab {
+                left: 15px;
+            }
+        }
+
+        &_list {
+            &_item {
+                display: flex;
+                margin-bottom: -20px;
+                position: relative;
+                @include tab {
+                    margin-bottom: 30px;
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background: $orange;
+                    top: 20px;
+                    left: 50%;
+                    margin-left: -20px;
+                    @include tab {
+                        width: 30px;
+                        height: 30px;
+                        top: 15px;
+                        left: 0;
+                        margin-left: 0;
+                    }
+                }
+                @include odd {
+                    flex-direction: row-reverse;
+                    @include tab {
+                        flex-direction: row;
+                    }
+                    .l-history_timeline_year {
+                        text-align: left;
+                        @include tab {
+                            text-align: center;
+                        }
+                        &:before { 
+                            right: auto;
+                            left: -20px;
+                            border-style: solid;
+                            border-width: 11px 19px 11px 0;
+                            border-color: transparent #f06d45 transparent transparent;                             
+                        }
+                    }
+                }
+                &_wrap {
+                    width: 45%;
+                    border: 3px solid $orange;
+                    @include tab {
+                        width: calc(100% - 50px);
+                        margin-left: 50px;
+                    }
+                }
+            }
+        }
+
+        &_year {
+            color: #fff;
+            font-size: 3.2rem;
+            background: $orange;  
+            font-family: $ASL;    
+            padding: 10px 27px;   
+            position: relative;
+            text-align: right;
+            @include tab {
+                text-align: center;
+                font-size: 2.8rem;
+                padding: 2px 0;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                left: auto;
+                right: -20px;
+                top: 50%;
+                margin-top: -11px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 11px 0 11px 19px;
+                border-color: transparent transparent transparent #f06d45;   
+                @include tab {
+                    right: auto;
+                    left: -20px;
+                    border-width: 11px 19px 11px 0;
+                    border-color: transparent #f06d45 transparent transparent;                        
+                }                 
+            }   
+        }
+
+        &_cont {
+            &_list {
+                padding: 27px;
+                @include tab {
+                    padding: 15px 22px;
+                }
+                &_item {
+                    color: $orange;
+                    font-size: 2rem;
+                    font-weight: 500;
+                    @include tab {
+                        font-size: 1.6rem;
+                        line-height: 1.5;
+                    }
+                    @include not-last {
+                        margin-bottom: 34px;
+                        @include tab {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}

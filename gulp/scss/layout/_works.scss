@@ -6,16 +6,49 @@
 @use 'variables';
 
 .l-works {
+
+    padding: 298px 0 230px;
+    position: relative;
+    @include tab {
+        padding: 40px 0 100px;
+    }
+    
+    &_ttl {
+        color: $blue;
+        font-size: 25rem;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        top: 200px;            
+        @include tab {
+            position: relative;
+            text-align: center;
+            top: auto;
+            left: auto;
+            font-size: 6rem;
+        }
+    }
+
+    .l-btn {
+        &_viewall {
+            text-align: right;
+        }
+    }
     
     /* -----------------------------------------------------
      .l-works_list
     ----------------------------------------------------- */
 
     &_list {
+        border-top: 1px solid $blue;
+        margin-bottom: 45px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 0;
         row-gap: 4rem;
+        @include tab {
+            margin-bottom: 15px;
+        }
 
         @include tab {
             grid-template-columns: 1fr;
@@ -36,41 +69,55 @@
             }
             > a {
                 display: grid;
-                grid-template-rows: 183px auto auto;
+                grid-template-rows: 320px auto auto auto;
                 gap: 1.5rem;
                 height: 100%;
-                padding: 25px 25px 25px 25px;
-                border-radius: 3px; 
+                padding: 60px 20%;
+                padding-bottom: 30px;
+                color: $blue;
+                text-align: center;
                 position: relative;
+                border-right: 1px solid $blue;
+                border-bottom: 1px solid $blue;
                 @include tab {
-                    grid-template-rows: auto auto auto;                
+                    grid-template-rows: auto auto auto;    
+                    padding: 30px 20px;            
                 }
-                .l-works_ttl {
-                    grid-row: 2 / span 1;
-                }
-                .l-works_fig {
-                    grid-row: 1 / span 1;
+
+            }
+            &_ttl {
+                color: $blue;
+                font-size: 2.4rem;
+                font-weight: bold;
+                grid-row: 2 / span 1;
+            }
+            &_fig {
+                grid-row: 1 / span 1;
+                position: relative;
+                text-align: center;
+                border: 3px solid $blue;
+                width: 65%;
+                margin: 0 auto;
+                img {
                     position: relative;
-                    text-align: center;
-                    img {
-                        position: relative;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-                .l-works_tags_list {
-                    grid-row: 3 / span 1;
-                    display: flex;
-                    flex-wrap: wrap;
-                    margin-top: auto;
-                    &_item {
-                        font-size: 1.4rem;
-                        margin-right: 5px;
-                        color: $grey;
-                    }
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
+            &_tags_list {
+                grid-row: 3 / span 1;
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: auto;
+                justify-content: center;
+                border-right: -7px;
+                &_item {
+                    font-size: 1.4rem;
+                    margin-right: 5px;
+                    color: $blue;
+                }
+            }            
         }
     }
     
@@ -79,7 +126,7 @@
     ----------------------------------------------------- */
 
     &_post {
-        width: $dkt-wrap;
+        max-width: $dkt-wrap;
         margin: 0 auto;
 
         &_ttl {

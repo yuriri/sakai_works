@@ -10,6 +10,7 @@ function theme_enqueue_styles() {
     // // JSを読み込む
     // wp_enqueue_script( 'jquery-3.2.1.min', get_stylesheet_directory_uri() . '/js/jquery-3.2.1.min.js');
     // wp_enqueue_script( 'meanmenu', get_stylesheet_directory_uri() . '/js/meanmenu/jquery.meanmenu.min.js');
+    wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/assets/js/script.min.js');
 
 }
 
@@ -45,7 +46,8 @@ function add_custom_column( $defaults ) {
 add_action( 'after_setup_theme', 'menu_setup' );
 function menu_setup() {
     register_nav_menus( array(
-      'top-menu' => 'トップメニュー'
+      'top-menu' => 'トップメニュー',
+      'sns-menu' => 'SNSメニュー'
     ) );
 }
 
@@ -53,11 +55,11 @@ function menu_setup() {
 add_filter('nav_menu_css_class', 'atg_menu_classes', 10, 3);
 function atg_menu_classes($classes, $item, $args) {
     $classes = array(); // クラス名を初期化
-    if($args->theme_location == 'top-menu') {
-        $classes[] = 'l-header-shop__list__item';
-    } elseif($args->theme_location == 'sp-menu') {
-        $classes[] = 'l-header_sp-menu__list__item';
-    }
+    // if($args->theme_location == 'top-menu') {
+    //     $classes[] = 'l-hdr_nav_list_item';
+    // } elseif($args->theme_location == 'sp-menu') {
+    //     $classes[] = 'l-header_sp-menu__list__item';
+    // }
     return $classes;
 }
 
@@ -267,8 +269,8 @@ function add_thumbnail_size() {
     // サムネイルを有効化する
     add_theme_support( 'post-thumbnails' );
 
-    add_image_size( 'works_thumb', 250, 250, true );    
-    add_image_size( 'works_gallery', 1430, 2000, true );    
+    add_image_size( 'works_thumb', 520, 570, array('center','top') );    
+    add_image_size( 'works_gallery', 1430, 2000, array('center','top') );    
 
 }
 

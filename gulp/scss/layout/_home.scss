@@ -6,12 +6,50 @@
 @use 'variables';
 
 /* -----------------------------------------------------
- .l-home ブログ
+ .l-home トップページ
 ----------------------------------------------------- */
 
 .l-home {
-    
-    .m-works {
-    
+    &_hero {
+        // padding: 345px 0 50px;
+        background: $grada1;
+        height: 100vh;
+        &_inr {
+            max-width: $dkt-wrap;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            // /* align-items: center; */
+            justify-content: center;
+            height: 100vh;
+            padding: 100px 0;  
+            position: relative;          
+            @include tab {
+                max-width: $sp-wrap;
+                justify-content: space-around;
+            }
+        }
+        &_name {
+            font-family: $ASL;
+            font-size: 250px;
+            line-height: 1;
+            @include tab {
+                font-size: 100px;
+                text-align: center;
+            }
+        }
+        &_job {
+            font-family: $Raleway;
+            font-size: 100px;
+            text-align: right;
+            @include tab {
+                font-size: 45px;
+            }
+        }  
+        .l-btn_scroll {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }      
     }
 }

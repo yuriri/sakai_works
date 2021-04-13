@@ -7,40 +7,346 @@
 
 .l-skills {
     
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: flex-start;
+    @include tab {
+        display: block;
+        padding-top: 48px;
+    }
+
+    &_ttl {
+        &_wrap {
+            flex-shrink: 0;
+        }
+        font-family: $Raleway;
+        font-size: 15rem;
+        line-height: 1;
+        writing-mode: vertical-rl;  
+        text-orientation: upright;            
+        padding-top: 165px;
+        padding-left: 30px;
+        padding-right: 30px;  
+        word-break: keep-all;
+        letter-spacing: -0.2em;        
+        @include tab {
+            font-size: 6rem;
+            text-align: center;
+            writing-mode: horizontal-tb;
+            padding: 0;
+            margin-bottom: 0;
+            letter-spacing: .05em;
+        }  
+    }
+    &_box {
+        flex: 1;
+        background: #DEDEDE;
+        border-left: 1px solid #000;
+        padding: 165px 40px 75px;
+        @include tab {
+            border-left: none;
+            border-top: 1px solid #000;
+            padding: 57px 20px;
+        }
+    }
     &_container {
-       border: 2px solid hotpink;
-       margin: 20px;
-       padding: 20px;
+        margin: 20px;
+        padding: 20px;
+        position: relative;
+        border-radius: 50%;
+        margin-bottom: 200px;
+        position: relative;
+        @include tab {
+            margin: 0;
+            margin-bottom: 80px;
+            padding-top: 40px;
+        }
+        @include odd {
+            border: 5px solid rgba(230, 24, 226, .67);
+            background: radial-gradient(rgba(230, 24, 226, .67) 0%, rgba(28, 238, 247, .67) 100%);
+            margin-left: auto;
+        }
+        @include even {
+            border: 5px solid rgba(66, 108, 46, .67);
+            background: radial-gradient(rgba(86, 255, 34, .67) 0%, rgba(240, 108, 69, .67) 100%);
+        }  
+        
+        // LANGUAGESコンテナー
+        @include first(1) {
+            width: 75%;
+            height: 500px;
+            @include tab {
+                width: 100%;
+                height: auto;
+            }
+            .l-skills_term {
+                position: absolute;
+                top: 40%;
+                right: 20%;
+                @include tab {
+                    position: relative;
+                    top: auto;
+                    right: auto;
+                }
+            }            
+            .l-skills_term-child_block {
+                position: absolute;
+                @include tab {
+                    position: relative;
+                    margin-bottom: 20px;
+                    top: auto !important;
+                    right: auto !important;
+                }
+                // #frontend
+                @include firsttype(1) {
+                    top: -20px;
+                    right: 10px;
+                }
+                // #taskrunner
+                @include firsttype(2) {
+                    top: 300px;
+                    left: 10px;
+                } 
+                // #serverside
+                @include firsttype(3) {
+                    top: 300px;
+                    right: 0px;
+                }                                
+            }
+        }
+        // TOOLSコンテナー
+        @include first(2) {
+            width: 90%;
+            height: 900px;
+            @include tab {
+                width: 100%;
+                height: auto;
+            }            
+            .l-skills_term {
+                position: absolute;
+                top: 18%;
+                right: 12%;
+                @include tab {
+                    position: relative;
+                    top: auto;
+                    right: auto;
+                }                
+            }
+            .l-skills_term-child_block {
+                position: absolute;
+                @include tab {
+                    position: relative;
+                }
+                // #design
+                @include firsttype(1) {
+                    top: 5%;
+                    left: -3%;
+                }
+                // #cms
+                @include firsttype(2) {
+                    top: 30%;
+                    right: 5%;
+                }  
+                // #editor
+                @include firsttype(3) {
+                    top: 35%;
+                    left: 33%;
+                } 
+                // #ci/cd
+                @include firsttype(4) {
+                    top: 60%;
+                    right: 9%;
+                }  
+                // #marketing
+                @include firsttype(5) {
+                    top: 70%;
+                    right: 35%;
+                } 
+                // #database
+                @include firsttype(6) {
+                    top: 80%;
+                    right: 60%;
+                } 
+                // #communitacion
+                @include firsttype(7) {
+                    top: 50%;
+                    left: 0;
+                }                                                                                                
+            }
+        }    
+        // OSコンテナー
+        @include first(3) {
+            width: 30%;
+            height: 250px;
+            @include tab {
+                width: 100%;
+                height: auto;
+            }            
+            .l-skills_term {
+                position: absolute;
+                top: -20%;
+                right: 35%;
+                @include tab {
+                    position: relative;
+                    top: auto;
+                    right: auto;
+                }                
+            }            
+            .l-skills_term-child_block {
+                position: absolute;
+                @include tab {
+                    position: relative;
+                }
+                @include firsttype(1) {
+                    top: 15%;
+                    left: 18%;
+                }
+            }
+        }            
     }
 
     &_term {
-       color: #fff;
-       background: hotpink;
-       margin-bottom: 20px;
-       padding: 10px 20px;
+        font-size: 8rem;
+        font-family: $Codystar;
+        z-index: 1;
+        word-break: keep-all;
+        @include tab {
+            font-size: 3.2rem;
+            text-align: center;
+            word-break: break-all;
+            margin-bottom: 15px;
+        }
     }
 
     &_term-child {
 
         &_block {
-            border: 2px solid blue;
-            margin-bottom: 30px;
-            padding: 20px;
+            display: inline-block;
+            padding: 30px;
+            background: #fff;
+            border-radius: 50px;
+            @include tab {
+                padding: 20px;
+                padding-bottom: 10px;
+                border-radius: 20px;
+                display: block;
+                position: relative;
+                margin-bottom: 30px;
+                top: auto !important;
+                right: auto !important;
+                left: auto !important;
+            }            
         }
 
         &_ttl {
-            background: palegreen;
-            color: #fff;
-            margin-bottom: 10px;
+            color: #000;
+            font-size: 2rem;
+            font-weight: $regular;
+            margin-bottom: 20px;
+            @include tab {
+                font-size: 1.6rem;
+                text-align: center;
+                margin-bottom: 10px;
+            }
         }
     }
 
     &_list {
-       
+        display: flex;
+        margin-left: -20px;
+        justify-content: center;
+        @include tab {
+            flex-wrap: wrap;
+            margin-left: -20px;
+        }
         &_item {
+            margin-left: 20px;
+            flex-basis: 15%;
+            position: relative;
+            transition-delay: .2s; 
+            display: flex;
+            flex-direction: column;    
+            @include tab {
+                margin-left: 10px;
+                flex-basis: calc(50% - 10px);
+                margin-bottom: 20px;
+            }    
+
             &_name {
+                font-size: 1.4rem;
+                text-align: center;
                 color: hotpink;
+                font-weight: $medium;
                 margin-bottom: 10px;
+            }
+            &_icon {
+                text-align: center;
+                margin-top: auto;
+                @include tab {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;                
+                }
+                > img {
+                    max-width: 75px;
+                    max-height: 75px;
+                }
+            }
+            &_parts {
+                display: none;
+                position: absolute;
+                width: 200%;
+                height: 130%;
+                padding: 10px;
+                top: -15%;
+                left: -50%;
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.8);
+                color: $orange;
+                font-weight: $medium;
+                border-top-left-radius: 25%;
+                border-top-right-radius: 34%;
+                border-bottom-left-radius: 40%;
+                border-bottom-right-radius: 24%;
+                box-shadow: 1px 1px 4px #ddd;      
+                opacity: 0;
+                transition-duration: .2s;   
+                @include tab {
+                    width: 100%;
+                    left: 0;
+                }      
+            }
+            @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+                .l-skills_list_item_parts {
+                    backdrop-filter: blur(5px);                
+                    opacity: 0;
+                    transition-delay: .2s;         
+                }
+            }
+            &:hover {
+                .l-skills_list_item_parts {
+                    opacity: .8;
+                }
+                @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+                    .l-skills_list_item_parts {
+                        opacity: .75;
+                    }
+                }
+            }
+            &_level {
+                font-size: 1.2rem;
+            }
+            &_years {
+                font-size: 1.2rem;
+            }
+            &_note {
+                margin-top: auto;
+                font-size: 1.2rem;
             }
         }
 

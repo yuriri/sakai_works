@@ -111,7 +111,7 @@ const browserSync = require('browser-sync');
 const browserSyncOption = {
     files: ['./**/*.php'],
     proxy: 'http://localhost:8000/',
-    reloadOnRestart: true,
+    reloadDelay: 2000
 };
 gulp.task('bs-sync', function (done) {
     browserSync.init(browserSyncOption);
@@ -128,10 +128,11 @@ gulp.task('bs-reload', function (done) {
 
 gulp.task('default', gulp.series(gulp.parallel('sass', 'babel', 'images', 'bs-sync'), function () {
     gulp.watch('gulp/**/*.scss', gulp.task('sass'));
-    gulp.watch('gulp/js/', gulp.task('babel'));
+    gulp.watch('gulp/es6/*.es6', gulp.task('babel'));
     gulp.watch( dir + '/**/*.+(jpg|jpeg|png|gif)', gulp.task('images'))
     // gulp.watch('gulp/imgs/', gulp.task('imgRename'));
     gulp.watch('./**/*.php', gulp.task('bs-reload'));
     gulp.watch('./assets/css/scss/style.min.css', gulp.task('bs-reload'));
+    gulp.watch('./assets/js/script.min.css', gulp.task('bs-reload'));
     gulp.watch('./assets/*.js', gulp.task('bs-reload'));
 }));

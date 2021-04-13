@@ -1,15 +1,15 @@
-<!-- /.l-wrap_01 .m-works -->
-<article class="l-wrap_01 m-works">
+<!-- /.l-works -->
+<article class="l-works" id="js-works">
 
-    <h2 class="l-ttl_02 ttl-works">WORKS</h2>
+    <h2 class="l-ttl_02 l-works_ttl">WORKS</h2>
 
-    <p class="l-btn_viewall"><a href="">VIEW ALL</a></p>
+    <p class="l-btn_viewall"><a href="<?php echo esc_url( home_url('/') ); ?>works/">VIEW ALL<svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path d="M0 11.341h79.07L67.978.355" fill="none" stroke="#132efc"/></svg></a></p>
 
     <?php 
         $args = array(
             'post_type' => 'works_post',
             'post_status' => 'publish',
-            'posts_per_page' => -1
+            'posts_per_page' => 6
         );
         $wp_query = new WP_Query($args);  
         if ( $wp_query -> have_posts() ) :
@@ -29,8 +29,8 @@
         ?>
             <li class="l-works_list_item"> 
                 <a href="<?php echo the_permalink(); ?>">
-                    <h3 class="l-works_ttl"><?php echo $title; ?></h3>
-                    <figure class="l-works_fig">
+                    <h3 class="l-works_list_item_ttl"><?php echo $title; ?></h3>
+                    <figure class="l-works_list_item_fig">
                         <?php if($thumb): ?>
                             <?php echo $thumb; ?>
                         <?php else: ?>
@@ -39,12 +39,14 @@
                     </figure>
 
                     <?php if ( !empty( $terms ) ) : ?>
-                        <ul class="l-works_tags_list">
+                        <ul class="l-works_list_item_tags_list">
                             <?php foreach ( $terms as $term ) : ?>
-                                <li class="l-works_tags_list_item">#<?php echo $term->name; ?></li>
+                                <li class="l-works_list_item_tags_list_item">#<?php echo $term->name; ?></li>
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
+
+                    <button class="l-btn_detail">DETAIL<svg xmlns="http://www.w3.org/2000/svg" width="50" height="11.841"><path d="M0 11.341h79.07L50.355" fill="none" stroke="#132efc"/></svg></button>
                 </a>
             </li>
 
@@ -53,7 +55,7 @@
     <?php endif; wp_reset_postdata(); ?>
     <!-- /.l-works_list -->
 
-    <p class="l-btn_viewall"><a href="">VIEW ALL</a></p>
+    <p class="l-btn_viewall"><a href="<?php echo esc_url( home_url('/') ); ?>works/">VIEW ALL<svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path d="M0 11.341h79.07L67.978.355" fill="none" stroke="#132efc"/></svg></a></p>
 
 </article>
-<!-- /.l-wrap_01 .m-works -->
+<!-- /..l-works -->

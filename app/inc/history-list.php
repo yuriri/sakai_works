@@ -1,12 +1,12 @@
-<!-- /.l-wrap_01 -->
-<article class="l-wrap_01 m-history">
+<!-- /.l-wrap_01 l-history -->
+<article class="l-wrap_01 l-history" id="scr-history">
 
-    <h2 class="l-ttl_02 ttl-history">HISTORY</h2>
+    <h2 class="l-ttl_02 l-history_ttl"><span>HISTORY</span></h2>
 
-    <article class="m-history_timeline">
+    <article class="l-history_timeline">
 
-        <!-- .m-history_timeline_list -->
-        <ul class="m-history_timeline_list">
+        <!-- .l-history_timeline_list -->
+        <ul class="l-history_timeline_list">
 
             <?php 
                 $args = array(
@@ -24,16 +24,25 @@
 
                                 if( get_row_layout() == 'history_dt_wrap' ): ?>
 
-                                    <li class="m-history_timeline_list_item">
+                                    <li class="l-history_timeline_list_item">
+                                        <div class="l-history_timeline_list_item_wrap">
 
-                                        <h3 class="m-history_timeline_year"><?php the_sub_field('history_year'); ?></h3>
+                                            <h3 class="l-history_timeline_year"><?php the_sub_field('history_year'); ?></h3>
 
-                                    <?php if( have_rows('history_cont_wrap') ): 
-                                        while ( have_rows('history_cont_wrap') ) : the_row();
-                                        ?>
-                                        <p class="m-history_timeline_cont"><?php the_sub_field('history_cont'); ?></p>
-                                    <?php endwhile; endif; ?>
+                                            <?php if( have_rows('history_cont_wrap') ): 
 
+                                                echo '<ul class="l-history_timeline_cont_list">';
+                                                while ( have_rows('history_cont_wrap') ) : the_row();
+                                                ?>
+
+                                                    <li class="l-history_timeline_cont_list_item"><?php the_sub_field('history_cont'); ?></li>
+                                                
+                                                <?php endwhile;
+                                                echo '</ul>';
+                                            endif; ?>
+                                            
+                                        </div>
+                                        <!-- /.l-history_timeline_list_item_wrap -->
                                     </li>
                                 <?php endif; ?>
 
@@ -42,10 +51,10 @@
             <?php endwhile; endif; wp_reset_postdata(); ?>
 
         </ul>
-        <!-- /.m-history_timeline_list -->
-        
+        <!-- /.l-history_timeline_list -->
+
     </article>
-    <!-- /.m-history_timeline -->
+    <!-- /.l-history_timeline -->
 
 </article>
 <!-- /.l-wrap_01 -->
