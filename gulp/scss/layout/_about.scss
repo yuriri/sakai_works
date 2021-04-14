@@ -18,8 +18,9 @@
         position: absolute;
         left: 50%;
         margin-left: -17px;
-        bottom: 10px;
+        bottom: 0;
         margin: 0 auto;
+        animation: about_btn_scrl 1s infinite;
     }
 
     &_inr {
@@ -37,8 +38,9 @@
         }
     }
     &_ttl {
+        width: 100%;
         max-width: 1000px;
-        margin: 0 auto 120px;
+        margin: 0 auto 60px;
         position: relative;
         &_about {
             display: block;
@@ -63,6 +65,7 @@
         }
     }
     &_text {
+        width: 100%;
         max-width: 1000px;
         margin: 0 auto;
         font-family: $noto-vf;

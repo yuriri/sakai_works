@@ -1,15 +1,43 @@
-<!-- /.l-works -->
-<article class="l-works" id="js-works">
+<?php get_header(); ?>
 
-    <h2 class="l-ttl_02 l-works_ttl">WORKS</h2>
+<?php 
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1 ;
 
-    <p class="l-btn_viewall"><a href="<?php echo get_post_type_archive_link( 'works_post' ); ?>">VIEW ALL<svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path d="M0 11.341h79.07L67.978.355" fill="none" stroke="#132efc"/></svg></a></p>
+    // タクソノミー名
+    $taxonomy = get_query_var('taxonomy');
+    // ポストタイプ
+    $tax_posttype = get_taxonomy($taxonomy)->object_type[0];
+    $tax_taxonomyname = $tax_posttype.'_cat';
+    
+    $wp_obj = $wp_obj ?: get_queried_object();
+    // タクソノミー タームスラッグ
+    $term_slug_02 = $wp_obj->slug;
+    // タクソノミー ターム名
+    $term_slug_02_name = $wp_obj->name;
+?>
+
+
+<h3 class="l-ttl_02 l-works_ttl">WORKS</h3>
+<h4 class="l-works_category">#<?php echo $term_slug_02_name; ?></h4>
+
+<!-- .l-works_post_wrap -->
+<article class="l-works_post_wrap">
 
     <?php 
         $args = array(
             'post_type' => 'works_post',
             'post_status' => 'publish',
-            'posts_per_page' => 6
+            'posts_per_page' => 15,
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
+            'paged' => $paged,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => $tax_taxonomyname,
+                    'field' => 'slug',
+                    'terms' => $term_slug_02,
+                ),
+            )                         
         );
         $wp_query = new WP_Query($args);  
         if ( $wp_query -> have_posts() ) :
@@ -52,10 +80,17 @@
 
         <?php endwhile; ?>
     </ul>
-    <?php endif; wp_reset_postdata(); ?>
-    <!-- /.l-works_list -->
+    <!-- /.l-works_list --> 
 
-    <p class="l-btn_viewall"><a href="<?php echo get_post_type_archive_link( 'works_post' ); ?>">VIEW ALL<svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path d="M0 11.341h79.07L67.978.355" fill="none" stroke="#132efc"/></svg></a></p>
+    <?php endif; wp_reset_postdata(); ?>
+
+    <?php
+        if ( function_exists( 'pagination' ) ) :
+            pagination( $wp_query->max_num_pages, $paged );
+        endif;  
+    ?>
 
 </article>
-<!-- /..l-works -->
+<!-- /.l-works_post_wrap -->
+
+<?php get_footer(); ?>

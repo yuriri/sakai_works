@@ -10,7 +10,7 @@ function theme_enqueue_styles() {
     // // JSを読み込む
     // wp_enqueue_script( 'jquery-3.2.1.min', get_stylesheet_directory_uri() . '/js/jquery-3.2.1.min.js');
     // wp_enqueue_script( 'meanmenu', get_stylesheet_directory_uri() . '/js/meanmenu/jquery.meanmenu.min.js');
-    wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/assets/js/script.min.js');
+    wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/assets/js/script.min.js', array(), '1.0.0', true);
 
 }
 
@@ -88,12 +88,20 @@ function my_body_class($classes) {
     }
     elseif (is_page()) {
         $page = get_post();
-        $classes[] = 'l-page l-shoppage l-'.$page->post_name;
+        $classes[] = 'l-page l-'.$page->post_name;
     }
     elseif (is_singular()) {
         $post = get_post_type();
         $classes[] = 'l-single l-'.$post;    
     }
+    elseif (is_tax()) {
+        $post = get_post_type();
+        $classes[] = 'l-archive l-taxonomy l-'.$post.'_archive l-'.$post.'_taxonomy';    
+    }        
+    elseif (is_archive()) {
+        $post = get_post_type();
+        $classes[] = 'l-archive l-'.$post.'_archive';    
+    }  
     else {
         $post = get_post_type();
         $classes[] = ' l-'.$post;    
@@ -168,6 +176,7 @@ function custom_post_type() {
             'hierarchical' => false,
             'menu_position' => 5, 
             'supports' => $Supports,
+            'rewrite' => array( 'slug' => 'works' ),
         )
     );  
     
@@ -235,7 +244,8 @@ function create_category_taxonomies() {
         'show_ui' => true,
         'show_in_nav_menus' => true,
         'hierarchical' => true,
-        'show_in_rest' => true,     
+        'show_in_rest' => true,    
+        'has_archive' => true,         
         )
     ); 
     
@@ -270,7 +280,7 @@ function add_thumbnail_size() {
     add_theme_support( 'post-thumbnails' );
 
     add_image_size( 'works_thumb', 520, 570, array('center','top') );    
-    add_image_size( 'works_gallery', 1430, 2000, array('center','top') );    
+    add_image_size( 'works_gallery', 1600, 2200, array('center','top') );    
 
 }
 
@@ -337,7 +347,7 @@ function pagination( $pages, $paged, $range = 2, $show_only = false ) {
         
         if ( $paged > 1 ) {
             // 「前のページへ」 の表示
-            echo '<li class="l-pager__01__list__item l-pager__01__arw l-pager__01__arw__prev"><a href="', get_pagenum_link( $paged - 1 ) ,'" class="l-pager__01__block next"><span>←</span></a></li>';
+            echo '<li class="l-pager__01__list__item l-pager__01__arw l-pager__01__arw__prev"><a href="', get_pagenum_link( $paged - 1 ) ,'" class="next"><span><svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path data-name="パス 30" d="M80.286 11.34H1.216L12.308.355" fill="none" stroke="#132efc"/></svg></span></a></li>';
         }              
 
         for ( $i = 1; $i <= $pages; $i++ ) {
@@ -345,16 +355,16 @@ function pagination( $pages, $paged, $range = 2, $show_only = false ) {
             if ( $i <= $paged + $range && $i >= $paged - $range ) {
                 // $paged +- $range 以内であればページ番号を出力
                 if ( $paged === $i ) {
-                    echo '<li class="l-pager__01__list__item l-pager__01__num l-pager__01__num__current"><span class="l-pager__01__item l-pager__01__block">', $i ,'</span></li>';
+                    echo '<li class="l-pager__01__list__item l-pager__01__num l-pager__01__num__current"><span class="l-pager__01__circle">', $i ,'</span></li>';
                 } else {
-                    echo '<li class="l-pager__01__list__item l-pager__01__num"><a href="', get_pagenum_link( $i ) ,'" class="l-pager__01__block l-pager__01__item">', $i ,'</a></li>';
+                    echo '<li class="l-pager__01__list__item l-pager__01__num"><a href="', get_pagenum_link( $i ) ,'" class="l-pager__01__circle">', $i ,'</a></li>';
                 }
             }
         }
 
         if ( $paged < $pages ) {
             // 「次のページへ」 の表示
-            echo '<li class="l-pager__01__list__item l-pager__01__arw l-pager__01__arw__next"><a href="', get_pagenum_link( $paged + 1 ) ,'" class="l-pager__01__block next"><span>→</span></a></li>';
+            echo '<li class="l-pager__01__list__item l-pager__01__arw l-pager__01__arw__next"><a href="', get_pagenum_link( $paged + 1 ) ,'" class="next"><span><svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path d="M0 11.341h79.07L67.978.355" fill="none" stroke="#132efc"/></svg></span></a></li>';
         }           
 
         echo '</ul>';
@@ -371,7 +381,7 @@ function pagination( $pages, $paged, $range = 2, $show_only = false ) {
             $from  = $paged * $ppp;
         }
         printf(
-          '<p class="l-pager__total">［全%1$s件中｜%2$s%3$s件目を表示］</p>',
+          '<p class="l-pager__01__total">［全%1$s件中｜%2$s%3$s件目を表示］</p>',
           $total,
           ( 1 < $count ? ($from + 1 . '〜') : '' ),
           ($from + $count )

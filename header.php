@@ -23,7 +23,7 @@
 	<meta name="twitter:card" content="summary" />	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Questrial&display=swap" rel="stylesheet">	
-	<link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Codystar:wght@300;400&family=Raleway:ital,wght@0,100;1,100;1,200&display=swap" rel="stylesheet">	
+	<link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Codystar:wght@300;400&family=Raleway:ital,wght@0,100..900;1,700&display=swap" rel="stylesheet">	
 	<?php wp_head(); ?>
 </head>
 
@@ -52,13 +52,19 @@
 			<!-- /.l-hdr_item -->
 
 			<section class="l-hdr_item l-hdr_item_nav">
-
+				<button class="l-tab-only" id="js-hdr-btn">
+					<span class="m-txt">MENU</span>
+					<span class="m-mark"></span>
+					<span class="m-mark"></span>
+					<span class="m-mark"></span>
+				</button>
 				<!-- .l-hdr-nav -->
 				<?php wp_nav_menu(
 					array(
 						'theme_location' => 'top-menu',
 						'container'  => 'nav',
 						'container_class' => 'l-hdr_nav',
+						'container_id' => 'js-hdr_nav',
 						'items_wrap' => '<ul class="l-hdr_nav_list">%3$s</ul>',
 					)
 				); ?>   

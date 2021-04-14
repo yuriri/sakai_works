@@ -64,6 +64,7 @@
                 display: flex;
                 margin-bottom: -20px;
                 position: relative;
+
                 @include tab {
                     margin-bottom: 30px;
                 }
@@ -77,6 +78,7 @@
                     top: 20px;
                     left: 50%;
                     margin-left: -20px;
+                    opacity: 0;
                     @include tab {
                         width: 30px;
                         height: 30px;
@@ -107,9 +109,20 @@
                 &_wrap {
                     width: 45%;
                     border: 3px solid $orange;
+                    transform: scale(0);
+                    transition-duration: .2s;
+
                     @include tab {
                         width: calc(100% - 50px);
                         margin-left: 50px;
+                    }
+                }
+                &.js-pop {
+                    .l-history_timeline_list_item_wrap {
+                        transform: scale(1);
+                    }
+                    &:after {
+                        opacity: 1;
                     }
                 }
             }

@@ -88,7 +88,7 @@
                                                                     <p class="l-skills_list_item_level">レベル：<?php echo $level; ?></p>
                                                                 <?php endif; ?>
                                                                 <?php if($years): ?>
-                                                                    <p class="l-skills_list_item_years">年数：<?php echo $years; ?></p>
+                                                                    <p class="l-skills_list_item_years">年数：<?php echo $years; ?>年</p>
                                                                 <?php endif; ?>
                                                                 <?php if($note): ?>
                                                                     <p class="l-skills_list_item_note">備考：<?php echo $note; ?></p>
@@ -152,7 +152,7 @@
                                                     <p class="l-skills_list_item_level">レベル：<?php echo $level; ?></p>
                                                 <?php endif; ?>
                                                 <?php if($years): ?>
-                                                    <p class="l-skills_list_item_years">年数：<?php echo $years; ?></p>
+                                                    <p class="l-skills_list_item_years">年数：<?php echo $years; ?>年</p>
                                                 <?php endif; ?>
                                                 <?php if($note): ?>
                                                     <p class="l-skills_list_item_note">備考：<?php echo $note; ?></p>

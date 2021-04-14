@@ -33,6 +33,7 @@
             font-family: $ASL;
             font-size: 250px;
             line-height: 1;
+            animation: ttl_hero_name_weight 4s forwards;
             @include tab {
                 font-size: 100px;
                 text-align: center;
@@ -42,6 +43,9 @@
             font-family: $Raleway;
             font-size: 100px;
             text-align: right;
+            font-weight: 100;
+            font-variation-settings: 'wght' 100;
+            animation: ttl_hero_job_weight 6s infinite;
             @include tab {
                 font-size: 45px;
             }

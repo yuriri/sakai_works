@@ -66,10 +66,18 @@
             border: 5px solid rgba(230, 24, 226, .67);
             background: radial-gradient(rgba(230, 24, 226, .67) 0%, rgba(28, 238, 247, .67) 100%);
             margin-left: auto;
+            .l-skills_list_item_parts {
+                color: #fff;
+                background: $grada1;
+            }
         }
         @include even {
             border: 5px solid rgba(66, 108, 46, .67);
             background: radial-gradient(rgba(86, 255, 34, .67) 0%, rgba(240, 108, 69, .67) 100%);
+            .l-skills_list_item_parts {
+                color: $orange;
+                background: $grada2;
+            }            
         }  
         
         // LANGUAGESコンテナー
@@ -272,6 +280,19 @@
                 flex-basis: calc(50% - 10px);
                 margin-bottom: 20px;
             }    
+            @include even {
+                .l-skills_list_item_parts {
+                    bottom: auto;
+                    top: calc(100% + 10px);
+                    &:before {
+                        top: auto;
+                        bottom: 100%;
+                        border-width: 0 0 50px 10px;
+                        border-color: transparent transparent #f06d45 transparent;
+                        
+                    }
+                }
+            }
 
             &_name {
                 font-size: 1.4rem;
@@ -283,11 +304,11 @@
             &_icon {
                 text-align: center;
                 margin-top: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;                
                 @include tab {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;                
                 }
                 > img {
                     max-width: 75px;
@@ -298,44 +319,46 @@
                 display: none;
                 position: absolute;
                 width: 200%;
-                height: 130%;
+                // height: 130%;
                 padding: 10px;
-                top: -15%;
-                left: -50%;
+                bottom: 100%;
+                left: -15px;
                 display: flex;
                 align-items: flex-start;
                 flex-direction: column;
                 justify-content: center;
-                background: rgba(255, 255, 255, 0.8);
-                color: $orange;
+                // background: $orange;
                 font-weight: $medium;
-                border-top-left-radius: 25%;
-                border-top-right-radius: 34%;
-                border-bottom-left-radius: 40%;
-                border-bottom-right-radius: 24%;
-                box-shadow: 1px 1px 4px #ddd;      
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                // box-shadow: 1px 1px 4px #ddd;    
+                
                 opacity: 0;
-                transition-duration: .2s;   
+                transition-duration: .1s;   
+                z-index: 1;
                 @include tab {
                     width: 100%;
                     left: 0;
-                }      
-            }
-            @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-                .l-skills_list_item_parts {
-                    backdrop-filter: blur(5px);                
-                    opacity: 0;
-                    transition-delay: .2s;         
+                }  
+                &:before {
+                    content: '';
+                    position: absolute;
+                    width: 4px;
+                    height: 50px;
+                    left: 30px;
+                    top: 100%;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 10px 50px 0;
+                    border-color: transparent #f06d45 transparent transparent;
                 }
             }
             &:hover {
                 .l-skills_list_item_parts {
-                    opacity: .8;
-                }
-                @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-                    .l-skills_list_item_parts {
-                        opacity: .75;
-                    }
+                    opacity: 1;
                 }
             }
             &_level {

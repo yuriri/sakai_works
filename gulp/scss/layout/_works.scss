@@ -32,8 +32,21 @@
     .l-btn {
         &_viewall {
             text-align: right;
+            a {
+                transition: cubic-bezier(0.215, 0.610, 0.355, 1);
+                &:hover {
+                    opacity: 1;
+                    color: $pink;
+                    svg {
+                        path {
+                            stroke: $pink;
+                        }
+                    }  
+                }
+            }
         }
     }
+   
     
     /* -----------------------------------------------------
      .l-works_list
@@ -48,6 +61,7 @@
         row-gap: 4rem;
         @include tab {
             margin-bottom: 15px;
+            row-gap: 0;
         }
 
         @include tab {
@@ -56,23 +70,34 @@
 
         &_item {
             position: relative;
-            &:before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                background: #fff;
-                filter: blur(2px);
+
+            &:hover {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    height: 5px;
+                    right: 0;
+                    bottom: 0;
+                    background: $pink;
+                    animation: works_active_bottom .6s ease forwards;
+                }
+                &:before {
+                    content: '';
+                    position: absolute;
+                    width: 5px;
+                    left: 0;
+                    bottom: 0;
+                    background: $pink;
+                    animation: works_active_left .8s ease forwards;
+                }                
             }
-            @include tab {
-                margin-bottom: 20px;
-            }
+
             > a {
                 display: grid;
                 grid-template-rows: 320px auto auto auto;
                 gap: 1.5rem;
                 height: 100%;
-                padding: 60px 20%;
+                padding: 60px 20% 70px;
                 padding-bottom: 30px;
                 color: $blue;
                 text-align: center;
@@ -81,12 +106,62 @@
                 border-bottom: 1px solid $blue;
                 @include tab {
                     grid-template-rows: auto auto auto;    
-                    padding: 30px 20px;            
+                    padding: 40px 20px 30px;            
                 }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 5px;
+                    left: 0;
+                    top: -1px;
+                    background: $pink;
+                    transition-duration: .2s;
+                }  
+                .l-btn_detail {
+                    transform: scale(.9);
+                    position: absolute;
+                    right: 20%;
+                    bottom: 20px;   
+                    transition-duration: .1s;             
+                }                  
+                &:hover {
+                    opacity: 1;
+                    color: $pink;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 5px;
+                        left: 0;
+                        top: -1px;
+                        background: $pink;
+                    }
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        width: 5px;
+                        right: -1px;
+                        top: 0;
+                        background: $pink;
+                        animation: works_active_right .4s ease forwards;
+                    }    
+                    .l-works_list_item_fig {
+                        border: 3px solid $pink;
+                    }  
 
+                    .l-btn_detail {
+                        color: $pink;
+                        right: 0;
+                        svg {
+                            path {
+                                stroke: $pink;
+                            }
+                        }
+                    }               
+                }
             }
             &_ttl {
-                color: $blue;
                 font-size: 2.4rem;
                 font-weight: bold;
                 grid-row: 2 / span 1;
@@ -115,7 +190,6 @@
                 &_item {
                     font-size: 1.4rem;
                     margin-right: 5px;
-                    color: $blue;
                 }
             }            
         }
@@ -126,40 +200,255 @@
     ----------------------------------------------------- */
 
     &_post {
-        max-width: $dkt-wrap;
-        margin: 0 auto;
-
-        &_ttl {
-            text-align: center;
-            margin-bottom: 13rem;
-            .ttl_white {
-                font-size: 3.2rem;
-                letter-spacing: .06em;
-                line-height: 1.5;
+        
+        color: $blue;
+        
+        &_wrap {
+            border-top: 1px solid $blue;
+            border-bottom: 1px solid $blue;
+            padding: 17rem 10rem 20rem;
+            @include tab {
+                padding: 6rem 2rem;
             }
         }
 
-        &_info {
-            background: #fff;
-            border-radius: 35px;
-            padding: 60px;
+        .l-ftr {
+            border-top: 1px solid $blue;
         }
 
-        &_url {
-            font-size: 2.6rem;
-            > a {
-                color: $blue;
+        .l-ttl_01,
+        .l-ftr_logo {
+            svg {
+                g {
+                    stroke: $blue;
+                }                
+                > path {
+                    stroke: $blue;
+                    fill: $blue;
+                }
+            }
+        }
+
+        .l-works_ttl {
+            position: relative;
+            top: 0;
+            font-size: 20rem;
+            @include tab {
+                font-size: 6rem;
+            }
+        }
+
+        &_ttl {
+            text-align: center;
+            font-size: 5rem;
+            color: $blue;
+            letter-spacing: .06em;
+            margin-bottom: 5rem;
+            @include tab {
+                font-size: 3rem;
+                margin-bottom: 3rem;
             }
         }
         
         &_tags {
             &_list {
                 display: flex;
-                color: $grey;
+                justify-content: center;
+                margin-bottom: 8rem;
+                flex-wrap: wrap;
+                @include tab {
+                    margin-bottom: 3rem;
+                }
                 &_item {
                     margin-right: 25px;
+                    font-size: 2.2rem;
+                    font-family: $Questrial;
+                    @include tab {
+                        font-size: 1.4rem;
+                        margin-right: 5px;
+                    }
                 }
             }
         }
+
+        &_url {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 10rem;
+            font-family: $Questrial;
+            @include tab {
+                font-size: 2rem;
+                margin-bottom: 4rem;
+            }
+            > a {
+                color: $blue;
+                border-bottom: 2px solid currentColor;
+                transition-duration: 0s;
+                margin-left: 5px;
+                position: relative;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    width: 30px;
+                    height: 30px;
+                    right: -38px;
+                    top: -4px;
+                    background: url('../../imgs/common/external-link.svg') right top / contain;
+                    @include tab {
+                        top: auto;
+                        bottom: -4px;
+                    }
+                }
+                &:hover {
+                    opacity: 1;
+                    color: #fff;
+                    border-bottom: 2px solid $blue;
+                    background: $blue;
+                }
+                img {
+                    vertical-align: top;
+                    margin-left: 3px;
+                }
+            }
+        }
+
+        &_figs {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto 10rem;
+            @include tab {
+                margin-bottom: 5rem;
+            }
+            &_list {
+                &_item {
+                    figure {
+                        border: 10px solid $blue;
+                        @include tab {
+                            border-width: 5px;
+                        }
+                    }
+                }
+            }
+        }        
+
+        &_info {
+            background: $blue;
+            color: #fff;
+            padding: 60px;
+            width: 70%;
+            margin: 0 auto;
+            @include tab {
+                width: 85%;
+                padding: 10px 20px;
+            }
+            &_lead {
+                text-align: center;
+                font-size: 3rem;
+                margin-bottom: 6rem;
+                @include tab {
+                    margin-bottom: 3rem;
+                    font-size: 2.2rem;
+                }
+            }
+            &_lower {
+                width: 90%;
+                margin: 0 auto;
+                @include tab {
+                    width: 100%;
+                }
+                > p {
+                    @include not-last {
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+
+        .l-single__pager {
+            padding-top: 4rem;
+            width: 70%;
+            margin: 0 auto;
+            @include tab {
+                width: 85%;
+            }
+            &__list {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                &__item {
+                    flex-basis: 40%;
+                    &.m_next {
+                        text-align: left;
+                    }
+                    &.m_prev {
+                        text-align: right;
+                    }
+                }
+            }
+        }
+
+        .l-ftr_sns_list li>a:before {
+            background: $blue;
+        }          
+
+    }
+
+    /* -----------------------------------------------------
+     .l-works_post_archive 作品一覧
+    ----------------------------------------------------- */    
+
+    &_post_archive {
+
+        color: $blue;
+
+        .l-ttl_01,
+        .l-ftr_logo {
+            svg {
+                g {
+                    stroke: $blue;
+                }                
+                > path {
+                    stroke: $blue;
+                    fill: $blue;
+                }
+            }
+        }
+
+        &.l-taxonomy {
+            .l-works_ttl {
+                @include tab {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+        .l-works_category {
+            position: absolute;
+            top: 200px;
+            right: 0;
+            font-family: $Raleway;
+            font-size: 10rem;
+            z-index: 1;
+            @include tab {
+                font-size: 2.4rem;
+                position: relative;
+                top: auto;
+                right: auto;
+                text-align: center;
+            }
+        }
+
+        .l-ftr {
+            border-top: none;
+        }
+
+        .l-works_post_wrap {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .l-ftr_sns_list li>a:before {
+            background: $blue;
+        }  
+
     }
 }

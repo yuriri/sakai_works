@@ -1,15 +1,19 @@
-<!-- /.l-works -->
-<article class="l-works" id="js-works">
+<?php get_header(); ?>
 
-    <h2 class="l-ttl_02 l-works_ttl">WORKS</h2>
+<h3 class="l-ttl_02 l-works_ttl">WORKS</h3>
 
-    <p class="l-btn_viewall"><a href="<?php echo get_post_type_archive_link( 'works_post' ); ?>">VIEW ALL<svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path d="M0 11.341h79.07L67.978.355" fill="none" stroke="#132efc"/></svg></a></p>
+<!-- .l-works_post_wrap -->
+<article class="l-works_post_wrap">
 
     <?php 
+        $paged = get_query_var('paged') ? get_query_var('paged') : 1 ;
         $args = array(
             'post_type' => 'works_post',
             'post_status' => 'publish',
-            'posts_per_page' => 6
+            'posts_per_page' => 15,
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
+            'paged' => $paged                
         );
         $wp_query = new WP_Query($args);  
         if ( $wp_query -> have_posts() ) :
@@ -52,10 +56,17 @@
 
         <?php endwhile; ?>
     </ul>
-    <?php endif; wp_reset_postdata(); ?>
-    <!-- /.l-works_list -->
+    <!-- /.l-works_list --> 
 
-    <p class="l-btn_viewall"><a href="<?php echo get_post_type_archive_link( 'works_post' ); ?>">VIEW ALL<svg xmlns="http://www.w3.org/2000/svg" width="80.285" height="11.841"><path d="M0 11.341h79.07L67.978.355" fill="none" stroke="#132efc"/></svg></a></p>
+    <?php endif; wp_reset_postdata(); ?>
+
+    <?php
+        if ( function_exists( 'pagination' ) ) :
+            pagination( $wp_query->max_num_pages, $paged );
+        endif;  
+    ?>
 
 </article>
-<!-- /..l-works -->
+<!-- /.l-works_post_wrap -->
+ 
+<?php get_footer(); ?>        
