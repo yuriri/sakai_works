@@ -151,8 +151,6 @@ body:not(.l-home) {
         }
         &_nav {
             justify-self: center;
-            @include tab {
-            }
             button {
                 position: relative;
                 height: 100%;
@@ -172,7 +170,8 @@ body:not(.l-home) {
                         height: 1px;
                         position: absolute;
                         border-bottom: 1px dotted #000;
-                        right: 0;
+                        right: -2px;
+                        transition-duration: .2s;
                         @include firsttype(2) {
                             width: 100%;
                             bottom: 50%;
@@ -187,6 +186,25 @@ body:not(.l-home) {
                         }
                     }
                 }
+                &.js-open {
+                    z-index: 9999;
+                    color: #fff;
+                    span.m-mark {
+                        border-color: #fff;
+                        @include firsttype(2) {
+                            transform: rotate(25deg);
+                            transform-origin: 0 0;                
+                        }
+                        @include firsttype(3) {
+                            display: none;
+                        }            
+                        @include firsttype(4) {
+                            width: 100%;
+                            transform: rotate(-25deg);
+                            transform-origin: 0 0;                
+                        }
+                   }        
+               }                
             }
         }
     }
@@ -200,24 +218,34 @@ body:not(.l-home) {
     }
     &_nav {
         @include tab {
-            display: none;
+            // display: none;
             position: absolute;
-            left: 0;            
+            opacity: 0.7;
+            top: 0;
+            left: -100%;      
+            transition-duration: .2s;      
+            width: 100vw;
+            height: 100vh;
         }
         &.js-show {
             @include tab {
-                display: block;
+                display: flex;
+                background: blue;
+                left: 0;
+                color: #fff;
+                align-items: center;
+                justify-content: center;
             }
         }
         &_list {
             display: flex;
-            margin-left: -40px;
+            margin-left: -20px;
             @include tab {
-                display: block;
                 margin-left: 0;
+                display: block;
             }
             li {
-                padding-left: 40px;
+                padding-left: 20px;
                 @include tab {
                     padding-left: 0;
                     margin-bottom: 10px;
@@ -229,13 +257,14 @@ body:not(.l-home) {
                     transition-duration: 0s;
                     display: flex;
                     @include tab {
+                        display: block;
                         font-size: 2rem;
+                        text-align: center;
                     }
                     &:hover {
                         opacity: 1;
                         color: #fff;
-                        background: $grada1;
-                        // border-bottom: 1px dotted $grada1; 
+                        background: $black;
                     }
                 }
             }
@@ -434,8 +463,9 @@ body:not(.l-home) {
                         font-size: 3rem;
                     }
                     &:hover {
+                        opacity: 1;
                         color: #fff;
-                        background: $green;
+                        background: $black;
                     }
                 }
             }

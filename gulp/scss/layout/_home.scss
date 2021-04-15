@@ -47,13 +47,23 @@
             font-variation-settings: 'wght' 100;
             animation: ttl_hero_job_weight 6s infinite;
             @include tab {
-                font-size: 45px;
+                font-size: 42px;
             }
         }  
         .l-btn_scroll {
             position: absolute;
             left: 0;
             bottom: 0;
+            animation: about_btn_scrl 1s infinite;
+            @include tab {
+                bottom: -20px;
+                span {
+                    font-size: 2rem;
+                }
+                svg {
+                    transform: scale(.8);
+                }
+            }
         }      
     }
 }

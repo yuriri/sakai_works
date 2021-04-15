@@ -53,7 +53,7 @@
                                             $args = array(
                                                 'post_status' => 'publish',
                                                 'post_type' =>  'skills_post',
-                                                'posts_per_page' => -1,                             
+                                                'posts_per_page' => -1,                                                                            
                                                 'tax_query' => array(
                                                     array(
                                                         'taxonomy' => $taxonomy,
@@ -119,7 +119,7 @@
                             $args = array(
                                 'post_status' => 'publish',
                                 'post_type' =>  'skills_post',
-                                'posts_per_page' => -1,                             
+                                'posts_per_page' => -1,                                                          
                                 'tax_query' => array(
                                     array(
                                         'taxonomy' => $taxonomy,

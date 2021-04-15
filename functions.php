@@ -281,6 +281,7 @@ function add_thumbnail_size() {
 
     add_image_size( 'works_thumb', 520, 570, array('center','top') );    
     add_image_size( 'works_gallery', 1600, 2200, array('center','top') );    
+    add_image_size( 'works_gallery_sp', 1000, 1400, array('center','top') );    
 
 }
 

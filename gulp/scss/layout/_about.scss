@@ -42,13 +42,15 @@
         max-width: 1000px;
         margin: 0 auto 60px;
         position: relative;
+        opacity: 0;
+        transition-duration: .3s;
         &_about {
             display: block;
             font-family: $Raleway;
             font-size: 20rem;
             text-align: left;
             @include tab {
-                font-size: 9rem;
+                font-size: 6.4rem;
             }
         }
         &_me {
@@ -60,18 +62,35 @@
             bottom: -40px;
             right: 0;
             @include tab {
-                font-size: 8rem;
+                font-size: 6.6rem;
+                bottom: -17px;
             }
         }
     }
     &_text {
-        width: 100%;
+        width: 70%;
         max-width: 1000px;
         margin: 0 auto;
         font-family: $noto-vf;
+        opacity: 0;
+        transition-duration: .5s;
+        transform: translateY(40px);
         @include tab {
+            width: 100%;
             max-width: 100%;
         }
     }
 
+    /* .js- でのアニメーション
+    ----------------------------------------------------- */    
+
+    &.js-show {
+        .l-about_text,
+        .l-about_ttl {
+            opacity: 1;
+        }
+        .l-about_text {
+            transform: translateY(0);
+        }
+    }
 }

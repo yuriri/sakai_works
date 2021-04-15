@@ -29,7 +29,9 @@
         padding-left: 30px;
         padding-right: 30px;  
         word-break: keep-all;
-        letter-spacing: -0.2em;        
+        letter-spacing: -0.2em;   
+        position: sticky;     
+        top: -165px;
         @include tab {
             font-size: 6rem;
             text-align: center;
@@ -37,6 +39,8 @@
             padding: 0;
             margin-bottom: 0;
             letter-spacing: .05em;
+            position: relative;
+            top: auto;
         }  
     }
     &_box {
@@ -68,15 +72,15 @@
             margin-left: auto;
             .l-skills_list_item_parts {
                 color: #fff;
-                background: $grada1;
+                background: $black;
             }
         }
         @include even {
             border: 5px solid rgba(66, 108, 46, .67);
             background: radial-gradient(rgba(86, 255, 34, .67) 0%, rgba(240, 108, 69, .67) 100%);
             .l-skills_list_item_parts {
-                color: $orange;
-                background: $grada2;
+                color: #fff;
+                background: $black;
             }            
         }  
         
@@ -220,7 +224,8 @@
         z-index: 1;
         word-break: keep-all;
         @include tab {
-            font-size: 3.2rem;
+            font-size: 4rem;
+            font-family: $Raleway;
             text-align: center;
             word-break: break-all;
             margin-bottom: 15px;
@@ -288,7 +293,7 @@
                         top: auto;
                         bottom: 100%;
                         border-width: 0 0 50px 10px;
-                        border-color: transparent transparent #f06d45 transparent;
+                        border-color: transparent transparent $black transparent;
                         
                     }
                 }
@@ -353,7 +358,7 @@
                     height: 0;
                     border-style: solid;
                     border-width: 0 10px 50px 0;
-                    border-color: transparent #f06d45 transparent transparent;
+                    border-color: transparent $black transparent transparent;
                 }
             }
             &:hover {
