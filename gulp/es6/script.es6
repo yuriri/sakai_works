@@ -128,7 +128,6 @@ function worksPopPage() {
 
     let scrlY = window.pageYOffset;
     const pageWorksWrap = document.getElementsByClassName('l-works_post_wrap');
-    console.log('pageWorksWrap = ' + pageWorksWrap);
     const worksItem = document.getElementsByClassName('l-works_list_item');
     const hdrHeight = document.getElementById('js-hdr').offsetHeight;
     const changeClass = 'js-pop';  
@@ -156,7 +155,6 @@ addEventListener( "scroll", function () {
     const works = document.getElementById('js-works');
     const history = document.getElementById('scr-history');
     const pageWorksWrap = document.getElementsByClassName('l-works_post_wrap');
-    console.log('pageWorksWrap = ' + pageWorksWrap);
 
     if(about) {
         hdrShow(); // ヘッダー表示
@@ -165,11 +163,11 @@ addEventListener( "scroll", function () {
         hdrChange(); // ヘッダー変化
         worksPop(); // 作品トップページポップ表示
     };
-    if(pageWorksWrap) {
-        worksPopPage(); // 作品詳細ページポップ表示
-    }
     if(history) {
         historyPop(); // historyポップ表示
     };
+    if(pageWorksWrap.length !== 0) {
+        worksPopPage(); // 作品詳細ページポップ表示
+    }    
 
 });
