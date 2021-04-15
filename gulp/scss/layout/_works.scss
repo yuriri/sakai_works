@@ -590,6 +590,15 @@
             }
         }
 
+        .l-hdr_item_nav {
+            button {
+                color: $blue;
+            }
+            .m-mark {
+                border-color: $blue;
+            }
+        }        
+
         &.l-taxonomy {
             .l-works_ttl {
                 @include tab {
