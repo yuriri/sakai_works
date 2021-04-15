@@ -312,9 +312,25 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                height: 100%;                
-                @include tab {
+                height: 100%;  
+                z-index: 2;
+                &.js-skill-mouse {
+                    + .l-skills_list_item_parts {
+                        opacity: 1;
+                        z-index: 3;
+                        @include tab {
+                            opacity: 0;
+                        }
+                    }
                 }
+                &.js-skill-touch {
+                    + .l-skills_list_item_parts {
+                        z-index: 3;
+                        @include tab {
+                            opacity: 1;
+                        }
+                    }
+                }                              
                 > img {
                     max-width: 75px;
                     max-height: 75px;
@@ -360,12 +376,7 @@
                     border-width: 0 10px 50px 0;
                     border-color: transparent $black transparent transparent;
                 }
-            }
-            &:hover {
-                .l-skills_list_item_parts {
-                    opacity: 1;
-                }
-            }
+            }            
             &_level {
                 font-size: 1.2rem;
             }

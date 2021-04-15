@@ -144,6 +144,38 @@ function worksPopPage() {
     });
 }
 
+//---------------------------
+// skillsのアニメーション
+//---------------------------
+
+const skillItem = document.getElementsByClassName('l-skills_list_item_icon');
+console.log('skillItem = ' + skillItem);
+const mouseClass = 'js-skill-mouse';
+const touchClass = 'js-skill-touch';
+
+Array.prototype.forEach.call(skillItem, function(item) {
+    item.addEventListener('touchstart', (e) => {
+        console.log('touchstartです');
+        const target = e.currentTarget;
+        target.classList.toggle(touchClass);
+    });    
+    item.addEventListener('mouseover', (e) => {
+        console.log('mouseoverした');
+        let target = e.currentTarget;
+        target.classList.add(mouseClass);
+    });
+    item.addEventListener('mouseleave', (e) => {
+        console.log('mouseleaveした');
+        let target = e.currentTarget;
+        target.classList.remove(mouseClass);
+    });    
+
+    // item.addEventListener('touchend', (e) => {
+    //     console.log('touchendです❤️');
+    //     let target = e.currentTarget;
+    //     target.classList.remove(touchClass);
+    // });    
+});
 
 //---------------------------
 // スクロールで発火
