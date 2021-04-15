@@ -312,7 +312,7 @@ body:not(.l-home) {
     padding: 45px 0;
     border-top: 1px solid #000;
     @include tab {
-        padding: 30px 0 60px;
+        padding: 30px 0 10px;
     }
 
     &_inr {
@@ -364,7 +364,7 @@ body:not(.l-home) {
             margin-right: 30px;
             @include tab {
                 display: block;
-                margin-bottom: 32px;
+                margin-bottom: 0;
                 margin-right: 0;
             }
         }
@@ -382,7 +382,6 @@ body:not(.l-home) {
         margin-bottom: 38px;
         @include tab {
             text-align: center;
-            margin-bottom: 70px;
         }
     }
     &_sns {
@@ -391,7 +390,7 @@ body:not(.l-home) {
                 margin-bottom: 6px;
                 @include tab {
                     margin-bottom: 10px;
-                    text-align: center;
+                    text-align: left;
                 }
                 > a {
                     font-family: $Codystar;
@@ -417,7 +416,7 @@ body:not(.l-home) {
                         }
                     }
                     @include tab {
-                        font-size: 2rem;
+                        font-size: 1.6rem;
                         text-align: center;
                     }
                 }
@@ -438,9 +437,11 @@ body:not(.l-home) {
             justify-content: space-between;   
             align-items: flex-end;    
             @include tab {
+                display: block;
                 align-items: center;
             }                 
             li {
+                text-align: right;
                 @for $i from 9 through 1 {
                     @include first(#{$i}) {
                         padding-right: $i * 20px;

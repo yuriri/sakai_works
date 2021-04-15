@@ -246,7 +246,12 @@
 
         .l-ftr {
             border-top: 1px solid $blue;
-        }
+            &-nav__list li a {
+                &:hover {
+                    background: $blue;
+                }
+            }      
+        }     
 
         .l-ttl_01,
         .l-ftr_logo {
@@ -531,11 +536,7 @@
                     }
                 }
             }
-        }
-
-        .l-ftr_sns_list li>a:before {
-            background: $blue;
-        }    
+        }  
         
         .l-btn_viewall {
             text-align: center;
@@ -590,6 +591,12 @@
             }
         }
 
+        .l-ftr-nav__list li a {
+            &:hover {
+                background: $blue;
+            }
+        }
+
         .l-hdr_item_nav {
             button {
                 color: $blue;
@@ -630,10 +637,6 @@
             padding-left: 0;
             padding-right: 0;
         }
-
-        .l-ftr_sns_list li>a:before {
-            background: $blue;
-        }  
 
     }
 
