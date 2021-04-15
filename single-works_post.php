@@ -107,7 +107,7 @@
 
     <?php get_template_part('app/inc/parts','pager');?>
 
-    <p class="l-works_post_totop"><a href="<?php echo esc_url( home_url('/') ); ?>"><span class="ttl_white"><span class="ttl_name">TOPに戻る</span></span></a></p>
+    <p class="l-works_post_totop"><a href="<?php echo esc_url( home_url('/') ); ?>"><span>TOPに戻る</span></a></p>
 
 <?php endwhile; endif; ?>
 

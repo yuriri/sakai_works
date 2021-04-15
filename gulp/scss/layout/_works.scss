@@ -5,6 +5,13 @@
 
 @use 'variables';
 
+.l-home {
+    .l-works_ttl {
+        transform: translateX(-100%);          
+        transition-duration: .5s;
+    }
+}
+
 .l-works {
 
     padding: 298px 0 230px;
@@ -20,8 +27,7 @@
         left: 0;
         z-index: 1;
         top: 200px;  
-        transform: translateX(-100%);          
-        transition-duration: .5s;
+        animation: slide-in-left .5s;
         @include tab {
             position: relative;
             text-align: center;
@@ -176,7 +182,7 @@
             }
             &_ttl {
                 font-size: 2.4rem;
-                font-weight: bold;
+                font-weight: $medium;
                 grid-row: 2 / span 1;
             }
             &_fig {
@@ -261,7 +267,7 @@
             color: $blue;
             letter-spacing: .08em;
             margin-bottom: 5rem;
-            font-weight: $regular;
+            font-weight: $medium;
             @include tab {
                 font-size: 3rem;
                 margin-bottom: 3rem;
@@ -285,6 +291,14 @@
                     @include tab {
                         font-size: 1.4rem;
                         margin-right: 5px;
+                    }
+                    a {
+                        transition: 0s;
+                        &:hover {
+                            opacity: 1;
+                            background: $blue;
+                            color: #fff;
+                        }
                     }
                 }
             }
@@ -403,6 +417,7 @@
                         border: 10px solid $blue;
                         height: 100%;
                         overflow-y: auto;
+                        cursor: url(../../../assets/imgs/common/ico_scrl_01.svg),all-scroll;
                         @include tab {
                             border-width: 5px;
                         }
@@ -449,21 +464,61 @@
         .l-single__pager {
             padding-top: 4rem;
             width: 70%;
-            margin: 0 auto;
+            margin: 0 auto 4rem;
             @include tab {
                 width: 85%;
             }
             &__list {
-                margin-bottom: 20px;
+                margin-bottom: 60px;
                 display: flex;
                 justify-content: space-between;
                 &__item {
                     flex-basis: 40%;
                     &.m_next {
                         text-align: left;
+                        a {
+                            margin-left: 10px;
+                            background: url(../../../assets/imgs/common/arw_left.svg) no-repeat 10px 10px;
+                            @include tab {
+                                margin-left: 0;
+                            }
+                        }
                     }
                     &.m_prev {
                         text-align: right;
+                        a {
+                            margin-right: 10px;
+                            background: url(../../../assets/imgs/common/arw_right.svg) no-repeat right 10px top 10px;
+                            @include tab {
+                                margin-right: 0;
+                            }
+                        }                        
+                    }
+                    a {
+                        display: block;
+                        font-size: 2rem;
+                        padding-top: 1.8rem;
+                        font-weight: $medium;
+                        border: 1px solid blue;
+                        padding: 10px;
+                        padding-top: 30px;                        
+                        &:hover {
+                            margin-left: 0;
+                            margin-right: 0;
+                            opacity: 1;
+                        }
+                        @include tab {
+                            height: 100%;
+                            font-size: 1.6rem;
+                        }
+                    }
+                    span {
+                        display: block;
+                        font-size: 1.4rem;
+                        margin-bottom: 1.2rem;
+                        @include tab {
+                            font-size: 1.2rem;
+                        }
                     }
                 }
             }
@@ -471,7 +526,37 @@
 
         .l-ftr_sns_list li>a:before {
             background: $blue;
-        }          
+        }    
+        
+        .l-btn_viewall {
+            text-align: center;
+            a {
+                transition: 0s;
+                &:hover {
+                    margin-top: 0;
+                    opacity: 1;
+                    background: $blue;
+                    color: #fff;
+                }
+            }
+        }   
+        
+        &_totop {
+            text-align: center;
+            > a {
+                display: inline-block;
+                text-align: center;
+                margin-bottom: 2rem;
+                transition: 0s;
+                &:hover {
+                    opacity: 1;
+                    span {
+                        background: $blue;
+                        color: #fff;
+                    }
+                }
+            }
+        }
 
     }
 

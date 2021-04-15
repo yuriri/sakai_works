@@ -46,6 +46,9 @@
             font-weight: 100;
             font-variation-settings: 'wght' 100;
             animation: ttl_hero_job_weight 6s infinite;
+            &:hover {
+                animation-play-state: paused;                
+            }
             @include tab {
                 font-size: 42px;
             }

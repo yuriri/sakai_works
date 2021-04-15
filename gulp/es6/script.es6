@@ -45,24 +45,6 @@ function hdrChange() {
 
 };
 
-// スクロールで発火
-addEventListener( "scroll", function () {
-    const about = document.getElementById('js-about');
-    const works = document.getElementById('js-works');
-    const history = document.getElementById('scr-history');
-
-    if(about) {
-        hdrShow();
-    };
-    if(works) {
-        hdrChange();
-        worksPop();
-    };
-    if(history) {
-        historyPop();
-    };
-
-});
 
 // ヘッダーのMENUを押すとメニューを開く
 function toggleMenu() {
@@ -100,6 +82,7 @@ function historyPop() {
 
 // worksのアニメーション
 function worksPop() {
+
     let scrlY = window.pageYOffset;
     const worksArea = document.getElementById('js-works');
     const worksItem = document.getElementsByClassName('l-works_list_item');
@@ -107,16 +90,61 @@ function worksPop() {
     const changeClass = 'js-pop';    
 
 
+    // トップページ
     Array.prototype.forEach.call(worksItem, function(item, index) {
         const itemRect = worksArea.getBoundingClientRect();
         const itemTop = itemRect.top + scrlY;
         
         if( scrlY >= itemTop - hdrHeight * 5) {
                 setTimeout(() => {
-
                 item.classList.add(changeClass);
             }, 500 * index);                
-            };
+        };
     });
 
+
 };
+
+function worksPopPage() {
+    let scrlY = window.pageYOffset;
+    const pageWorksWrap = document.getElementsByClassName('l-works_post_wrap');
+    console.log('pageWorksWrap = ' + pageWorksWrap);
+    const worksItem = document.getElementsByClassName('l-works_list_item');
+    const hdrHeight = document.getElementById('js-hdr').offsetHeight;
+    const changeClass = 'js-pop';  
+
+    // トップページ以外
+    Array.prototype.forEach.call(worksItem, function(item, index) {
+        const itemRect = pageWorksWrap[0].getBoundingClientRect();
+        const itemTop = itemRect.top + scrlY;
+        
+        if( scrlY >= itemTop - hdrHeight * 5) {
+                setTimeout(() => {
+                item.classList.add(changeClass);
+            }, 500 * index);                
+        };
+    });
+}
+
+// スクロールで発火
+addEventListener( "scroll", function () {
+    const about = document.getElementById('js-about');
+    const works = document.getElementById('js-works');
+    const history = document.getElementById('scr-history');
+    const pageWorksWrap = document.getElementsByClassName('l-works_post_wrap');
+
+    if(about) {
+        hdrShow();
+    };
+    if(works) {
+        hdrChange();
+        worksPop();
+    };
+    if(pageWorksWrap) {
+        worksPopPage();
+    }
+    if(history) {
+        historyPop();
+    };
+
+});
