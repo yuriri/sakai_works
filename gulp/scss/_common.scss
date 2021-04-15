@@ -188,9 +188,9 @@ body:not(.l-home) {
                 }
                 &.js-open {
                     z-index: 9999;
-                    color: #fff;
+                    color: #fff !important;
                     span.m-mark {
-                        border-color: #fff;
+                        border-color: #fff !important;
                         @include firsttype(2) {
                             transform: rotate(25deg);
                             transform-origin: 0 0;                
@@ -218,9 +218,8 @@ body:not(.l-home) {
     }
     &_nav {
         @include tab {
-            // display: none;
             position: absolute;
-            opacity: 0.7;
+            opacity: 1;
             top: 0;
             left: -100%;      
             transition-duration: .2s;      
@@ -248,7 +247,9 @@ body:not(.l-home) {
                 padding-left: 20px;
                 @include tab {
                     padding-left: 0;
-                    margin-bottom: 10px;
+                    @include not-last {
+                        margin-bottom: 10px;
+                    }
                 }
                 > a {
                     font-family: $Codystar;
@@ -258,7 +259,7 @@ body:not(.l-home) {
                     display: flex;
                     @include tab {
                         display: block;
-                        font-size: 2rem;
+                        font-size: 4rem;
                         text-align: center;
                     }
                     &:hover {

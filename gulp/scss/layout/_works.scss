@@ -225,6 +225,15 @@
     &_post {
         
         color: $blue;
+
+        .l-hdr_item_nav {
+            button {
+                color: $blue;
+            }
+            .m-mark {
+                border-color: $blue;
+            }
+        }
         
         &_wrap {
             border-top: 1px solid $blue;

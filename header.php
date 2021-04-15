@@ -51,7 +51,7 @@
 			<!-- /.l-hdr_item -->
 
 			<section class="l-hdr_item l-hdr_item_nav">
-				<button class="l-tab-only" id="js-hdr-btn">
+				<button class="l-tab-only" id="js-hdr-btn" aria-expanded="false" aria-controls="js-hdr_nav" aria-label="メニューを開く">
 					<span class="m-txt">MENU</span>
 					<span class="m-mark"></span>
 					<span class="m-mark"></span>

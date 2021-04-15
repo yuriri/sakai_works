@@ -1,4 +1,3 @@
-
 // ABOUTまでスクロールしたらヘッダーを表示させる
 function hdrShow() {
 
@@ -45,19 +44,37 @@ function hdrChange() {
 
 };
 
+//---------------------------
+// スマホでMENUボタンを表示
+//---------------------------
 
 // ヘッダーのMENUを押すとメニューを開く
 function toggleMenu() {
     const menuElm = document.getElementById('js-hdr_nav');
-    menuElm.classList.toggle('js-show');
+    const showClass = 'js-show';
+    menuElm.classList.toggle(showClass);
 };
-
+// ボタンを切り替える
+function menuBtnMove() {
+    menuBtn.classList.toggle('js-open');
+    let menuFlag = menuBtn.getAttribute('aria-expanded');
+    const labelOpen = 'メニューを開く';
+    const labelClose = 'メニューを閉じる';
+    
+    if( menuFlag === 'true') {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', labelOpen);
+    } else {
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', labelClose);
+    }
+}
+// クリックで発火
 const menuBtn = document.getElementById('js-hdr-btn');
 if(menuBtn) {
     menuBtn.addEventListener('click', (e) => {
         toggleMenu();
-        console.log('this = ' + e.target);
-        menuBtn.classList.toggle('js-open');
+        menuBtnMove();
     });
 }
 
@@ -80,7 +97,11 @@ function historyPop() {
     });
 };
 
+//---------------------------
 // worksのアニメーション
+//---------------------------
+
+// - トップページ
 function worksPop() {
 
     let scrlY = window.pageYOffset;
@@ -89,8 +110,6 @@ function worksPop() {
     const hdrHeight = document.getElementById('js-hdr').offsetHeight;
     const changeClass = 'js-pop';    
 
-
-    // トップページ
     Array.prototype.forEach.call(worksItem, function(item, index) {
         const itemRect = worksArea.getBoundingClientRect();
         const itemTop = itemRect.top + scrlY;
@@ -102,10 +121,11 @@ function worksPop() {
         };
     });
 
-
 };
 
+// - 作品個別ページ
 function worksPopPage() {
+
     let scrlY = window.pageYOffset;
     const pageWorksWrap = document.getElementsByClassName('l-works_post_wrap');
     console.log('pageWorksWrap = ' + pageWorksWrap);
@@ -113,7 +133,6 @@ function worksPopPage() {
     const hdrHeight = document.getElementById('js-hdr').offsetHeight;
     const changeClass = 'js-pop';  
 
-    // トップページ以外
     Array.prototype.forEach.call(worksItem, function(item, index) {
         const itemRect = pageWorksWrap[0].getBoundingClientRect();
         const itemTop = itemRect.top + scrlY;
@@ -126,25 +145,31 @@ function worksPopPage() {
     });
 }
 
+
+//---------------------------
 // スクロールで発火
+//---------------------------
+
 addEventListener( "scroll", function () {
+
     const about = document.getElementById('js-about');
     const works = document.getElementById('js-works');
     const history = document.getElementById('scr-history');
     const pageWorksWrap = document.getElementsByClassName('l-works_post_wrap');
+    console.log('pageWorksWrap = ' + pageWorksWrap);
 
     if(about) {
-        hdrShow();
+        hdrShow(); // ヘッダー表示
     };
     if(works) {
-        hdrChange();
-        worksPop();
+        hdrChange(); // ヘッダー変化
+        worksPop(); // 作品トップページポップ表示
     };
     if(pageWorksWrap) {
-        worksPopPage();
+        worksPopPage(); // 作品詳細ページポップ表示
     }
     if(history) {
-        historyPop();
+        historyPop(); // historyポップ表示
     };
 
 });
