@@ -34,7 +34,7 @@
                         <?php if($thumb): ?>
                             <?php echo $thumb; ?>
                         <?php else: ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank_fig.png" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank_fig.png" alt="" width="200" height="200">
                         <?php endif; ?>
                     </figure>
 

@@ -70,7 +70,10 @@
                                                     $title = get_the_title();
                                                     $level = get_field('level');
                                                     $years = get_field('years');    
-                                                    $icon = get_field('icon');    
+                                                    $icon = get_field('icon'); 
+                                                    $icon_size = 'skill_icon';  
+                                                    $icon_thumb = $icon['sizes'][$icon_size];
+                                                    $icon_alt = $icon['alt'];
                                                     $note = get_field('note');    
                                                 ?>
                 
@@ -78,7 +81,7 @@
                                                         <h4 class="l-skills_list_item_name"><?php echo $title; ?></h4>
                                                         <p class="l-skills_list_item_icon">
                                                             <?php if($icon): ?>
-                                                                <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
+                                                                <img src="<?php echo esc_url($icon_thumb); ?>" alt="<?php echo esc_attr($icon_alt); ?>" width="75" height="75">
                                                             <?php else: ?>
                                                             <?php endif; ?>
                                                         </p>
@@ -136,13 +139,16 @@
                                     $title = get_the_title();
                                     $level = get_field('level');
                                     $years = get_field('years');    
-                                    $icon = get_field('icon');    
+                                    $icon = get_field('icon'); 
+                                    $icon_size = 'skill_icon';  
+                                    $icon_alt = $icon['alt'];
+                                    $icon_thumb = $icon['sizes'][$icon_size];   
                                 ?>
                                     <li class="l-skills_list_item">
                                         <h4 class="l-skills_list_item_name"><?php echo $title; ?></h4>
                                         <p class="l-skills_list_item_icon">
                                             <?php if($icon): ?>
-                                                <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
+                                                <img src="<?php echo esc_url($icon_thumb); ?>" alt="<?php echo esc_attr($icon_alt); ?>" width="75" height="75">
                                             <?php else: ?>
                                             <?php endif; ?>
                                         </p>

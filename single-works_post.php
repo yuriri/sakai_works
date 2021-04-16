@@ -52,7 +52,7 @@
                 <ul class="l-works_post_figs_list">
                     <?php if($thumb): ?>
                         <li class="l-works_post_figs_list_item m-fig_pc<?php if(!$fig_sp): ?> m-wide<?php endif; ?>">
-                            <p class="l-works_post_figs_list_item_lead"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_desktop_01.svg" alt=""> DESKTOP</p>
+                            <p class="l-works_post_figs_list_item_lead"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_desktop_01.svg" alt="" width="40" height="38">DESKTOP</p>
                             <figure>
                                 <?php echo $thumb; ?>
                             </figure>
@@ -60,7 +60,7 @@
                     <?php endif; ?>
                     <?php if($fig_sp): ?>
                         <li class="l-works_post_figs_list_item m-fig_sp<?php if(!$thumb): ?> m-wide<?php endif; ?>">
-                            <p class="l-works_post_figs_list_item_lead"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_mobile_01.svg" alt="">MOBILE</p>
+                            <p class="l-works_post_figs_list_item_lead"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_mobile_01.svg" alt="" width="24" height="38">MOBILE</p>
                             <figure>
                                 <img src="<?php echo $fig_sp_src; ?>" alt="<?php echo $fig_sp_alt; ?>" width="<?php echo $fig_sp_width; ?>">
                             </figure>
