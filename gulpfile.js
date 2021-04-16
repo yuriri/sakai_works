@@ -3,11 +3,6 @@ const gulp = require("gulp");
 
 const rename = require('gulp-rename');
 
-let path = {
-    src1: './gulp/**/*.scss',
-    dist: './assets/'
-}
-
 // ----------------------------
 // SASSコンパイル
 // ----------------------------
@@ -76,19 +71,18 @@ gulp.task('babel', function (done) {
 // ----------------------------
 
 const imagemin = require('gulp-imagemin');
-const pngquant = require('imagemin-pngquant');
 const mozjpeg = require('imagemin-mozjpeg');
 const changed = require('gulp-changed');
+const pngquant = require('imagemin-pngquant');
 
 // 画像圧縮タスク
-let dir = 'gulp/imgs';
-let changedDir = 'assets/imgs';
-let distDir = 'assets/imgs'
+const dir = 'gulp/imgs';
+const distDir = 'assets/imgs'
 
 gulp.task('images', () => {
 
   return gulp.src(dir + '/**/*.+(jpg|jpeg|JPG|png|PNG|gif|svg)')
-    .pipe(changed(changedDir)) // gulp/imgフォルダの中身と、出力先のimgフォルダの中身を比較して異なるものだけ処理(新しく追加されたファイル等)
+    .pipe(changed(distDir)) // gulp/imgフォルダの中身と、出力先のimgフォルダの中身を比較して異なるものだけ処理(新しく追加されたファイル等)
     .pipe(imagemin([
         pngquant('65-80'),
         mozjpeg({
@@ -126,13 +120,12 @@ gulp.task('bs-reload', function (done) {
 // watch
 // ----------------------------
 
-gulp.task('default', gulp.series(gulp.parallel('sass', 'babel', 'images', 'bs-sync'), function () {
+gulp.task('default', gulp.series(gulp.parallel('sass', 'babel', 'bs-sync'), function () {
     gulp.watch('gulp/**/*.scss', gulp.task('sass'));
     gulp.watch('gulp/es6/*.es6', gulp.task('babel'));
-    gulp.watch( dir + '/**/*.+(jpg|jpeg|png|gif)', gulp.task('images'))
-    // gulp.watch('gulp/imgs/', gulp.task('imgRename'));
+    // gulp.watch( dir + '/**/*.+(jpg|jpeg|png|gif)', gulp.task('images'))
     gulp.watch('./**/*.php', gulp.task('bs-reload'));
     gulp.watch('./assets/css/scss/style.min.css', gulp.task('bs-reload'));
-    gulp.watch('./assets/js/script.min.css', gulp.task('bs-reload'));
-    gulp.watch('./assets/*.js', gulp.task('bs-reload'));
+    gulp.watch('./assets/js/script.min.js', gulp.task('bs-reload'));
+    // gulp.watch('./assets/*.js', gulp.task('bs-reload'));
 }));
