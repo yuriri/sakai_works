@@ -2,21 +2,29 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<?php if(is_home() || is_front_page()): ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />	
+	<?php if(is_singular('works_post')): ?>
+		<title><?php the_title(); ?> ｜ WORKS ｜ <?php bloginfo('name'); ?></title>	
+		<meta name="description" content="<?php bloginfo('name'); ?>、作品一覧、<?php the_title(); ?>のページです。">
+		<meta property="og:title" content="<?php bloginfo( 'name' ); ?>、作品一覧、<?php the_title(); ?>のページです。" />
+		<meta property="og:type" content="website" />	
+	<?php elseif( is_tax() ): ?>
+		<title><?php echo single_term_title(); ?> ｜ WORKS ｜ <?php bloginfo('name'); ?></title>	
+		<meta name="description" content="<?php bloginfo('name'); ?>、WORKS、<?php echo single_term_title(); ?>のページです。">
+		<meta property="og:title" content="<?php bloginfo('name'); ?>、WORKS、<?php echo single_term_title(); ?>のページです。" />
+	<?php elseif(is_archive()): ?>
+		<title>WORKS ｜ <?php bloginfo('name'); ?></title>	
+		<meta name="description" content="<?php bloginfo('name'); ?>、WORKSのページです。">
+		<meta property="og:title" content="<?php bloginfo('name'); ?>、WORKSのページです。" />
+	<?php else: ?>	
 		<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 		<title><?php bloginfo('name'); ?></title>
 		<meta property="og:title" content="<?php bloginfo( 'name' ); ?>" />
-		<meta property="og:type" content="website" />		
-	<?php elseif(is_singular('works_post')): ?>
-		<meta name="description" content="<?php the_title(); ?>のページです。｜<?php bloginfo( 'description' ); ?>">
-		<title><?php the_title(); ?> ｜ WORKS ｜ <?php bloginfo('name'); ?></title>	
-		<meta property="og:title" content="<?php the_title(); ?>のページです。｜<?php bloginfo( 'name' ); ?>" />
-		<meta property="og:type" content="website" />		
+		<meta property="og:type" content="website" />			
 	<?php endif; ?>
 	<meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>" />
-	<!-- <meta property="og:image" content="'. esc_url( home_url( '/' ) ) .'ogimg.png" />
-	<meta name="thumbnail" content="'. esc_url( home_url( '/' ) ) .'meta-thumb.png" />	 -->
+	<meta property="og:image" content="<?php echo esc_url( home_url( '/' ) ); ?>ogimg.png" />
+	<meta name="thumbnail" content="<?php echo esc_url( home_url( '/' ) ); ?>meta-thumb.png" />	
 	<!--  Facebook用設定 -->
 	<meta property="fb:app_id" content="" />
 	<!-- ※ Twitter共通設定 -->
