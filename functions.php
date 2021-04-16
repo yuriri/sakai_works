@@ -73,10 +73,10 @@ function removeId( $id ){
 //  ファビコン設定
 // ----------------------------
 
-// function add_favicon() {
-//     echo '<link rel="shortcut icon" href=" ' . get_template_directory_uri() . '/favicon.ico" type="image/x-icon" />' . "\n";
-// }   
-// add_action('wp_head', 'add_favicon');
+function add_favicon() {
+    echo '<link rel="shortcut icon" href=" ' . get_template_directory_uri() . '/favicon.ico" type="image/x-icon" />' . "\n";
+}   
+add_action('wp_head', 'add_favicon');
   
 // ----------------------------
 //  カテゴリ固有のクラスをbodyに追加
