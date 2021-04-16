@@ -235,6 +235,10 @@
             }
         }
         
+        .l-hdr_nav_list li>a:hover {
+            background: $blue;
+        }
+
         &_wrap {
             border-top: 1px solid $blue;
             border-bottom: 1px solid $blue;
@@ -590,6 +594,10 @@
                 }
             }
         }
+
+        .l-hdr_nav_list li>a:hover {
+            background: $blue;
+        }        
 
         .l-ftr-nav__list li a {
             &:hover {
