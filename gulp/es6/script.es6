@@ -69,13 +69,32 @@ function menuBtnMove() {
         menuBtn.setAttribute('aria-label', labelClose);
     }
 }
-// クリックで発火
+// トップページメニューページ内リンククリックでメニューを閉じる
+function menuClickClose() {
+    const menuKey = document.querySelectorAll('.l-hdr_nav_list li');
+    const menuElm = document.getElementById('js-hdr_nav');
+
+    menuKey.forEach(function(value) {
+
+        console.log(value);
+        value.addEventListener('click', (e) => {
+            toggleMenu();
+            menuBtnMove();
+        });
+    })
+
+};
+
 const menuBtn = document.getElementById('js-hdr-btn');
+
 if(menuBtn) {
+    // MENUボタンがある時に発火
+    menuClickClose();
+    // クリックで発火
     menuBtn.addEventListener('click', (e) => {
         toggleMenu();
         menuBtnMove();
-    });
+    });    
 }
 
 // historyのアニメーション
