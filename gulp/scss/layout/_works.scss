@@ -173,6 +173,9 @@
                     }    
                     .l-works_list_item_fig {
                         border: 3px solid $pink;
+                        &.fig_blank {
+                            background: $pink;
+                        }
                     }  
 
                     .l-btn_detail {
@@ -198,11 +201,21 @@
                 border: 3px solid $blue;
                 width: 65%;
                 margin: 0 auto;
+                background: $blue;
                 img {
                     position: relative;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+                &.fig_blank {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        width: 50%;
+                        height: auto;
+                    }
                 }
             }
             &_tags_list {
@@ -469,7 +482,7 @@
                 background: #fff;
                 color: $blue;
             }   
-            
+
             @include tab {
                 width: 90%;
                 padding: 20px;

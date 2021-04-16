@@ -1,3 +1,28 @@
+//---------------------------
+// lazyload設定
+//---------------------------
+
+if ("loading" in HTMLImageElement.prototype) {
+    var images = document.querySelectorAll('img[loading="lazy"]');
+    var sources = document.querySelectorAll("source[data-srcset]");
+    sources.forEach(function (source) {
+        source.srcset = source.dataset.srcset;
+    });
+    images.forEach(function (img) {
+        img.src = img.dataset.src;
+    });
+} else {
+    var script = document.createElement("script");
+    script.src = "assets/js/lazysizes.min.js";
+    document.body.appendChild(script);
+}
+
+// --------------------------- //
+//                             //
+//      アニメーション設定        //
+//                             //
+// --------------------------- //
+
 // ABOUTまでスクロールしたらヘッダーを表示させる
 function hdrShow() {
 
@@ -76,7 +101,6 @@ function menuClickClose() {
 
     menuKey.forEach(function(value) {
 
-        console.log(value);
         value.addEventListener('click', (e) => {
             toggleMenu();
             menuBtnMove();
@@ -168,32 +192,22 @@ function worksPopPage() {
 //---------------------------
 
 const skillItem = document.getElementsByClassName('l-skills_list_item_icon');
-console.log('skillItem = ' + skillItem);
 const mouseClass = 'js-skill-mouse';
 const touchClass = 'js-skill-touch';
 
 Array.prototype.forEach.call(skillItem, function(item) {
     item.addEventListener('touchstart', (e) => {
-        console.log('touchstartです');
         const target = e.currentTarget;
         target.classList.toggle(touchClass);
     });    
     item.addEventListener('mouseover', (e) => {
-        console.log('mouseoverした');
         let target = e.currentTarget;
         target.classList.add(mouseClass);
     });
     item.addEventListener('mouseleave', (e) => {
-        console.log('mouseleaveした');
         let target = e.currentTarget;
         target.classList.remove(mouseClass);
-    });    
-
-    // item.addEventListener('touchend', (e) => {
-    //     console.log('touchendです❤️');
-    //     let target = e.currentTarget;
-    //     target.classList.remove(touchClass);
-    // });    
+    });      
 });
 
 //---------------------------

@@ -80,10 +80,22 @@
                                                     <li class="l-skills_list_item">
                                                         <h4 class="l-skills_list_item_name"><?php echo $title; ?></h4>
                                                         <p class="l-skills_list_item_icon">
-                                                            <?php if($icon): ?>
-                                                                <img src="<?php echo esc_url($icon_thumb); ?>" alt="<?php echo esc_attr($icon_alt); ?>" width="75" height="75">
-                                                            <?php else: ?>
-                                                            <?php endif; ?>
+                                                        <?php if($icon): ?>
+                                                            <picture>
+                                                                <source data-srcset="<?php echo $src; ?>" />          
+                                                                <img 
+                                                                    src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank_skill.svg"
+                                                                    data-src="<?php echo esc_url($icon_thumb); ?>"
+                                                                    alt="<?php echo esc_attr($icon_alt); ?>"
+                                                                    width="75"
+                                                                    height="75"
+                                                                    class="lazyload"
+                                                                    loading="lazy"      
+                                                                >
+                                                            </picture>
+                                                        <?php else: ?>
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank_skill.svg" width="75" height="75">
+                                                        <?php endif; ?>
                                                         </p>
                                                         <?php if($level || $years || $note) : ?>                          
                                                             <section class="l-skills_list_item_parts">
@@ -148,8 +160,20 @@
                                         <h4 class="l-skills_list_item_name"><?php echo $title; ?></h4>
                                         <p class="l-skills_list_item_icon">
                                             <?php if($icon): ?>
-                                                <img src="<?php echo esc_url($icon_thumb); ?>" alt="<?php echo esc_attr($icon_alt); ?>" width="75" height="75">
+                                                <picture>
+                                                    <source data-srcset="<?php echo $src; ?>" />                                                   
+                                                    <img 
+                                                        src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank_skill.svg"
+                                                        data-src="<?php echo esc_url($icon_thumb); ?>"
+                                                        alt="<?php echo esc_attr($icon_alt); ?>"
+                                                        width="75"
+                                                        height="75"
+                                                        class="lazyload"
+                                                        loading="lazy"      
+                                                    >
+                                                </picture>
                                             <?php else: ?>
+                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank_skill.svg" width="75" height="75">
                                             <?php endif; ?>
                                         </p>
                                         <?php if($level || $years || $note) : ?>                          

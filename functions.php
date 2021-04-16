@@ -7,9 +7,7 @@ function theme_enqueue_styles() {
     // CSSを読み込む
     wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/assets/css/scss/style.min.css');
 
-    // // JSを読み込む
-    // wp_enqueue_script( 'jquery-3.2.1.min', get_stylesheet_directory_uri() . '/js/jquery-3.2.1.min.js');
-    // wp_enqueue_script( 'meanmenu', get_stylesheet_directory_uri() . '/js/meanmenu/jquery.meanmenu.min.js');
+    // JSを読み込む
     // wp_enqueue_script( 'intersection-observer', get_stylesheet_directory_uri() . '/assets/js/intersection-observer.js', array(), '1.0.0', true);
     wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/assets/js/script.min.js', array(), '1.0.0', true);
 
@@ -30,14 +28,14 @@ add_action('admin_menu', 'remove_menus');
 function add_custom_column( $defaults ) {
     $defaults['skills_post_cat'] = 'カテゴリー';
     return $defaults;
-  }
-  add_filter('manage_skills_post_posts_columns', 'add_custom_column');
-    function add_custom_column_id($column_name, $id) {
-      if( $column_name == 'skills_post_cat' ) {
-      echo get_the_term_list($id, 'skills_post_cat', '', ', ');
+}
+add_filter('manage_skills_post_posts_columns', 'add_custom_column');
+function add_custom_column_id($column_name, $id) {
+    if( $column_name == 'skills_post_cat' ) {
+        echo get_the_term_list($id, 'skills_post_cat', '', ', ');
     }
-  }
-  add_action('manage_skills_post_posts_custom_column', 'add_custom_column_id', 10, 2);
+}
+add_action('manage_skills_post_posts_custom_column', 'add_custom_column_id', 10, 2);
 
 // ----------------------------
 //  カスタムメニュー設定
@@ -56,11 +54,6 @@ function menu_setup() {
 add_filter('nav_menu_css_class', 'atg_menu_classes', 10, 3);
 function atg_menu_classes($classes, $item, $args) {
     $classes = array(); // クラス名を初期化
-    // if($args->theme_location == 'top-menu') {
-    //     $classes[] = 'l-hdr_nav_list_item';
-    // } elseif($args->theme_location == 'sp-menu') {
-    //     $classes[] = 'l-header_sp-menu__list__item';
-    // }
     return $classes;
 }
 
@@ -280,10 +273,11 @@ function add_thumbnail_size() {
     // サムネイルを有効化する
     add_theme_support( 'post-thumbnails' );
 
+    // 作品画像類
     add_image_size( 'works_thumb', 300, 570, array('center','top') );    
     add_image_size( 'works_gallery', 1600, 2200, array('center','top') );    
     add_image_size( 'works_gallery_sp', 1000, 1400, array('center','top') );    
-
+    //　スキルアイコン
     add_image_size( 'skill_icon', 75, 9000 );    
 
 }
@@ -392,23 +386,5 @@ function pagination( $pages, $paged, $range = 2, $show_only = false ) {
         );        
         
         echo '</div>';
-    }
-}
-
-if (!function_exists('array_key_first')) {
-    function array_key_first(array $arr) {
-        foreach($arr as $key => $unused) {
-            return $key;
-        }
-        return NULL;
-    }
-}
-if (!function_exists("array_key_last")) {
-    function array_key_last(array $arr) {
-        if (empty($arr)) {
-            return NULL;
-        }
-
-        return array_keys($arr)[count($arr) - 1];
     }
 }

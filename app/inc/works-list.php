@@ -23,6 +23,12 @@
                 $title = get_the_title();
                 $size = 'works_thumb';
                 $thumb = get_the_post_thumbnail($post->ID, $size);
+                $thumbnail_id = get_post_thumbnail_id($post->ID); 
+                $image = wp_get_attachment_image_src( $thumbnail_id, $size ); 
+                $src = $image[0];
+                $width = $image[1];
+                $height = $image[2];
+
                 $url = get_field('url');
                 $taxonomy = 'works_post_cat';
                 $terms = get_the_terms( $post->ID, $taxonomy );
@@ -30,13 +36,28 @@
             <li class="l-works_list_item"> 
                 <a href="<?php echo the_permalink(); ?>">
                     <h3 class="l-works_list_item_ttl"><?php echo $title; ?></h3>
-                    <figure class="l-works_list_item_fig">
-                        <?php if($thumb): ?>
-                            <?php echo $thumb; ?>
-                        <?php else: ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank_fig.png" alt="" width="200" height="200">
-                        <?php endif; ?>
-                    </figure>
+                    <?php if($thumb): ?>
+                        <figure class="l-works_list_item_fig">
+                            <picture>
+                                <source data-srcset="<?php echo $src; ?>" />                                
+                                <img
+                                    src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank.svg"
+                                    data-src="<?php echo $src; ?>"
+                                    alt="<?php echo $title; ?>のサムネイル画像"
+                                    width="<?php echo $width; ?>"
+                                    height="<?php echo $height; ?>"
+                                    class="lazyload"
+                                    loading="lazy"
+                                >
+                            </picture>
+                        </figure>
+                    <?php else: ?>
+                        <figure class="l-works_list_item_fig fig_blank">
+                            <img
+                                src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank.svg" alt="画像はありません" width="50" height="50"
+                            >
+                        </figure>
+                    <?php endif; ?>
 
                     <?php if ( !empty( $terms ) ) : ?>
                         <ul class="l-works_list_item_tags_list">

@@ -30,7 +30,7 @@
 	<!-- ※ Twitter共通設定 -->
 	<meta name="twitter:card" content="summary" />	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,700&family=Codystar:wght@400&family=Raleway:ital,wght@0,100..900;1,700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">	
+	<link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300&family=Codystar:wght@400&family=Raleway:ital,wght@0,100..900;1,700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">	
 	<?php wp_head(); ?>
 </head>
 
