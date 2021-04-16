@@ -14,11 +14,16 @@
     @include tab {
         display: block;
         padding-top: 48px;
-    }
+    }     
 
     &_ttl {
+        
         &_wrap {
             flex-shrink: 0;
+            ::selection {
+                background: #dedede;
+                color: $pink;
+            }  
         }
         font-family: $Raleway;
         font-size: 15rem;
@@ -44,6 +49,12 @@
         }  
     }
     &_box {
+
+        ::selection {
+            background: #dedede;
+            color: $blue;
+        }  
+
         flex: 1;
         background: #DEDEDE;
         border-left: 1px solid #000;

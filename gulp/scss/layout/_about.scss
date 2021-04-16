@@ -13,6 +13,11 @@
     background: $grada2;
     height: 100vh;
 
+    ::selection {
+        background: #fff;
+        color: #3ba614;
+    }    
+
     .l-btn_scroll {
         display: block;
         position: absolute;
