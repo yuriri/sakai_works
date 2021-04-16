@@ -199,7 +199,7 @@ Array.prototype.forEach.call(skillItem, function(item) {
     item.addEventListener('touchstart', (e) => {
         const target = e.currentTarget;
         target.classList.toggle(touchClass);
-    });    
+    }, {passive: true}); 
     item.addEventListener('mouseover', (e) => {
         let target = e.currentTarget;
         target.classList.add(mouseClass);
