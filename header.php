@@ -45,6 +45,8 @@
 				<h1 class="l-ttl_01">
 					<a href="<?php echo esc_url( home_url('/') ); ?>">
 						<svg xmlns="http://www.w3.org/2000/svg">
+							<title>Sakai Yuri Portfolio ロゴ</title>
+							<desc>クリックするとトップページへもどる</desc>
 							<defs>
 								<radialGradient id="g0">
 									<stop offset="0" stop-color="#1ceef7"/>

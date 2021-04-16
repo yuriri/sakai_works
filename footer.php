@@ -8,6 +8,8 @@
         <h2 class="l-ftr_logo">
             <a href="<?php echo esc_url( home_url('/') ); ?>">
                 <svg xmlns="http://www.w3.org/2000/svg">
+                    <title>Sakai Yuri Portfolio ロゴ</title>
+                    <desc>クリックするとトップページへもどる</desc>
                     <defs>
                         <radialGradient id="g1">
                             <stop offset="0" stop-color="#ecfce7"/>
