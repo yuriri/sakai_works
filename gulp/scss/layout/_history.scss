@@ -174,7 +174,7 @@
                 &_item {
                     color: $orange;
                     font-size: 2rem;
-                    font-weight: 500;
+                    font-weight: $medium;
                     @include tab {
                         font-size: 1.6rem;
                         line-height: 1.5;
