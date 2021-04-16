@@ -10,6 +10,7 @@ function theme_enqueue_styles() {
     // // JSを読み込む
     // wp_enqueue_script( 'jquery-3.2.1.min', get_stylesheet_directory_uri() . '/js/jquery-3.2.1.min.js');
     // wp_enqueue_script( 'meanmenu', get_stylesheet_directory_uri() . '/js/meanmenu/jquery.meanmenu.min.js');
+    // wp_enqueue_script( 'intersection-observer', get_stylesheet_directory_uri() . '/assets/js/intersection-observer.js', array(), '1.0.0', true);
     wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/assets/js/script.min.js', array(), '1.0.0', true);
 
 }
