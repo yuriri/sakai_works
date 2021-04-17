@@ -76,6 +76,8 @@
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 0;
         row-gap: 4rem;
+        position: relative;
+        z-index: 1;
         @include tab {
             margin-bottom: 15px;
             row-gap: 0;
@@ -87,7 +89,7 @@
 
         &_item {
             position: relative;
-            opacity: .7;
+            opacity: 1;
             transform: translateY(40px);    
             transition-duration: .3s;        
 
@@ -117,15 +119,14 @@
                 grid-template-rows: 320px auto auto auto;
                 gap: 1.5rem;
                 height: 100%;
-                padding: 60px 20% 70px;
-                padding-bottom: 30px;
+                padding: 60px 9% 30px;
                 color: $blue;
                 text-align: center;
                 position: relative;
                 border-right: 1px solid $blue;
                 border-bottom: 1px solid $blue;
                 @include tab {
-                    grid-template-rows: auto auto auto;    
+                    grid-template-rows: 300px auto auto auto;    
                     padding: 40px 20px 30px;            
                 }
                 &:after {
@@ -260,6 +261,9 @@
         }
         
         .l-hdr_nav_list li>a:hover {
+            background: $blue;
+        }
+        .l-ftr_sns_list li>a:before {
             background: $blue;
         }
 
@@ -640,6 +644,9 @@
             &:hover {
                 background: $blue;
             }
+        }
+        .l-ftr_sns_list li>a:before {
+            background: $blue;
         }
 
         .l-hdr_item_nav {
