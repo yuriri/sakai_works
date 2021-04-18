@@ -49,6 +49,12 @@
         position: relative;
         opacity: 0;
         transition-duration: .3s;
+        @include sp {
+            width: 70%;
+        }
+        @include sp-small {
+            width: 100%;
+        }
         &_about {
             display: block;
             font-family: $Raleway;
