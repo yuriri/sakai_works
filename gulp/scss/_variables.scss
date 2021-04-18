@@ -13,19 +13,13 @@ $blue: #132EFC;
 $orange: #F06C45;
 $green: #5cf924;
 
+// gradation
 $grada1: linear-gradient(#1ceef7 0%, #f854c6 100%);
 $grada1_circle: radial-gradient(#f854c6 0%, #1ceef7 100%);
 $grada2: radial-gradient(#fff 0%, #ecfce7 37.44%, #5cf924 70.44%, #ffc74a 100%);
 
 // font
 // -------------------------
-
-// @font-face ----------
-
-// @font-face {
-//     font-family: 'NotoVF';
-//     src: url('../../fonts/NotoSansCJKjp-VF.woff') format('woff');
-// }
 
 // font-family ----------
 
@@ -37,8 +31,6 @@ $Codystar: 'Codystar', "Helvetica", sans-serif;
 // $noto-vf: 'NotoVF', "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 $Raleway: 'Raleway', sans-serif;
 
-
-
 // fontSize
 // -------------------------
 $fontSizeSS: 1.2rem;
@@ -48,7 +40,7 @@ $fontSizeM: 2.2rem;
 $fontSizeL: 2.6rem;
 $fontSizeLL: 3.2rem;
 
-// fontSize
+// fontWeight
 // -------------------------
 
 // noto-sans
@@ -60,7 +52,7 @@ $medium: 500;
 // -------------------------
 
 $dkt: 1432px; // desktop
-$dkt-wrap: calc(100vw - 300px); // desktop
+$dkt-wrap: calc(100vw - 300px); // desktop-wrap
 $tab: 1024px; // tablet
 $sp: 767px;  // sp
 $sp-small: 375px;

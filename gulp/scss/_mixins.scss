@@ -131,6 +131,7 @@
 }
 
 // animation
+
 @keyframes ttl_hero_name_weight {
 	0% {
 		opacity: 30%;
@@ -168,27 +169,6 @@
 	100% {
 		transform: scale(.7) translateY(-10px);		
 	}		
-}
-
-@keyframes active-menu-ber03 {
-    0% {
-      transform: translateY(0) rotate(0);
-    }
-    50% {
-      transform: translateY(-8px) rotate(0);
-    }
-    100% {
-      transform: translateY(-18px) rotate(-45deg);
-    }
-}
-
-@keyframes hdrFix {
-	0% {
-		transform: translateY(-100%)
-	}
-	100% {
-		transform: translateY(0)
-	}
 }
 
 @keyframes works_active_right {
