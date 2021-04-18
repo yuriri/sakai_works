@@ -12,19 +12,19 @@
                 $url = get_field('url');
                 $size = 'works_gallery';
 
-                $thumb = get_the_post_thumbnail($post->ID, $size);
-                $thumbnail_id = get_post_thumbnail_id($post->ID); 
-                $image = wp_get_attachment_image_src( $thumbnail_id, $size ); 
-                $src = $image[0];
-                $width = $image[1];
-                $height = $image[2];
+                $fig_dkt = get_field('fig_dkt');  
+                $size_dkt = 'works_gallery';
+                $fig_dkt_src = $fig_dkt['sizes'][$size_dkt];              
+                $fig_dkt_width = $fig_dkt['sizes'][$size_dkt. '-width'];              
+                $fig_dkt_height = $fig_dkt['sizes'][$size_dkt. '-height'];              
+                $fig_dkt_alt = $fig_dkt['alt'];                 
 
                 $fig_sp = get_field('fig_sp');  
                 $size_sp = 'works_gallery_sp';
                 $fig_sp_src = $fig_sp['sizes'][$size_sp];              
                 $fig_sp_width = $fig_sp['sizes'][$size_sp. '-width'];              
                 $fig_sp_height = $fig_sp['sizes'][$size_sp. '-height'];              
-                $fig_sp_alt = $fig_sp['alt'];              
+                $fig_sp_alt = $fig_sp['alt']; 
 
                 $duration = get_field('duration');
                 $charge = get_field('charge');
@@ -52,53 +52,59 @@
         
         <?php if($url): ?>
             <p class="l-works_post_url">URL:<a href="<?php echo $url; ?>" target="_blank"><?php echo $url; ?></a></p>
+        <?php else: ?>
+            <p class="l-works_post_progress">urlは準備中です</p>
         <?php endif; ?>        
 
         <section class="l-works_post_figs">
-            <?php if($thumb || $fig_sp): ?>
+            <?php if($fig_dkt || $fig_sp): ?>
 
                 <ul class="l-works_post_figs_list">
-                    <?php if($thumb): ?>
+                    <?php if($fig_dkt): ?>
                         <li class="l-works_post_figs_list_item m-fig_pc<?php if(!$fig_sp): ?> m-wide<?php endif; ?>">
-                            <p class="l-works_post_figs_list_item_lead"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_desktop_01.svg" alt="" width="40" height="38">DESKTOP</p>
-                            <figure>
-                                <picture>
-                                    <source data-srcset="<?php echo $src; ?>" />                                
-                                    <img
-                                        src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank.svg"
-                                        data-src="<?php echo $src; ?>"
-                                        alt="<?php echo $title; ?>のサムネイル画像"
-                                        width="<?php echo $width; ?>"
-                                        height="<?php echo $height; ?>"
-                                        class="lazyload"
-                                        loading="lazy"
-                                    >
-                                </picture>
+                            <figure class="l-works_post_figs_list_item_fig">
+                                <figcaption class="l-works_post_figs_list_item_fig_figcaption"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_desktop_01.svg" alt="" width="40" height="38">DESKTOP</figcaption>
+                                <div class="l-works_post_figs_list_item_fig_img">
+                                    <picture>
+                                        <source data-srcset="<?php echo $fig_dkt_src; ?>" />    
+                                        <img
+                                            src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank.svg"
+                                            data-src="<?php echo $fig_dkt_src; ?>"
+                                            alt="<?php echo $fig_dkt_alt; ?>"
+                                            width="<?php echo $fig_dkt_width; ?>"
+                                            height="<?php echo $fig_dkt_height; ?>"
+                                            class="lazyload"
+                                            loading="lazy"      
+                                        >
+                                    </picture>
+                                </div>
                             </figure>
                         </li>
                     <?php endif; ?>
                     <?php if($fig_sp): ?>
-                        <li class="l-works_post_figs_list_item m-fig_sp<?php if(!$thumb): ?> m-wide<?php endif; ?>">
-                            <p class="l-works_post_figs_list_item_lead"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_mobile_01.svg" alt="" width="24" height="38">MOBILE</p>
-                            <figure>
-                                <picture>
-                                    <source data-srcset="<?php echo $src; ?>" />                                 
-                                    <img
-                                        src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank.svg"
-                                        data-src="<?php echo $fig_sp_src; ?>"
-                                        alt="<?php echo $fig_sp_alt; ?>"
-                                        width="<?php echo $fig_sp_width; ?>"
-                                        height="<?php echo $fig_sp_height; ?>"
-                                        class="lazyload"
-                                        loading="lazy"                                        
-                                    >
-                                </picture>
+                        <li class="l-works_post_figs_list_item m-fig_sp<?php if(!$fig_dkt): ?> m-wide<?php endif; ?>">
+                            <figure class="l-works_post_figs_list_item_fig">
+                                <figcaption class="l-works_post_figs_list_item_fig_figcaption"><img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/ico_mobile_01.svg" alt="" width="24" height="38">MOBILE</figcaption>
+                                <div class="l-works_post_figs_list_item_fig_img">
+                                    <picture>
+                                        <source data-srcset="<?php echo $fig_sp_src; ?>" />                                 
+                                        <img
+                                            src="<?php echo get_template_directory_uri(); ?>/assets/imgs/common/blank.svg"
+                                            data-src="<?php echo $fig_sp_src; ?>"
+                                            alt="<?php echo $fig_sp_alt; ?>"
+                                            width="<?php echo $fig_sp_width; ?>"
+                                            height="<?php echo $fig_sp_height; ?>"
+                                            class="lazyload"
+                                            loading="lazy"                                        
+                                        >
+                                    </picture>
+                                </div>
                             </figure>
                         </li>                
                     <?php endif; ?>
                 </ul>
             <?php else: ?>
-                <p>画像準備中です</p>
+                <p class="l-works_post_progress">画像は準備中です</p>
             <?php endif; ?>
         </section>
 

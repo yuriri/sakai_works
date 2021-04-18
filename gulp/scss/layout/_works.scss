@@ -267,6 +267,7 @@
             background: $blue;
         }
 
+
         &_wrap {
             border-top: 1px solid $blue;
             border-bottom: 1px solid $blue;
@@ -335,15 +336,19 @@
                     font-size: 2.2rem;
                     font-family: $Raleway;
                     @include tab {
-                        font-size: 1.4rem;
-                        margin-right: 5px;
+                        font-size: 1.6rem;
+                        margin-right: 10px;
+                        margin-bottom: 7px;
                     }
                     a {
-                        transition: 0s;
+                        display: block;
+                        transition: .1s all ease-in;
+                        border-bottom: 1px solid $blue;
                         &:hover {
                             opacity: 1;
                             background: $blue;
                             color: #fff;
+                            transform: translateY(-3px);                            
                         }
                     }
                 }
@@ -376,6 +381,7 @@
                     right: -38px;
                     top: -4px;
                     background: url('../../imgs/common/external-link.svg') right top / contain;
+                    transition: .1s all;
                     @include tab {
                         top: auto;
                         bottom: 0px;
@@ -389,12 +395,21 @@
                     color: #fff;
                     border-bottom: 2px solid $blue;
                     background: $blue;
+                    &:before {
+                        top: -8px;
+                    }
                 }
                 img {
                     vertical-align: top;
                     margin-left: 3px;
                 }
             }
+        }
+
+        &_progress {
+            text-align: center;
+            font-size: 2rem;
+            padding-bottom: 2rem;
         }
 
         &_figs {
@@ -432,7 +447,7 @@
                     &.m-fig_sp {
                         flex-basis: 30%;
                         &.m-wide {
-                            flex-basis: 100%;
+                            flex-basis: 30%;
                         }                        
                         @include tab {
                             margin-bottom: 60px;
@@ -454,21 +469,37 @@
                             vertical-align: sub;
                         }
                     }                 
-                    figure {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        bottom: 0;
-                        right: 0;                         
-                        border: 10px solid $blue;
-                        height: 100%;
-                        overflow-y: auto;
-                        cursor: url(../../../assets/imgs/common/ico_scrl_01.svg),all-scroll;
-                        @include tab {
-                            border-width: 5px;
+                    &_fig {
+                        &_figcaption {
+                            position: absolute;
+                            top: -23px;
+                            left: 0;
+                            z-index: 100;
+                            font-family: $Raleway;
+                            img {
+                                width: auto;
+                                height: 1.2em;
+                                margin-right: 4px;
+                                vertical-align: sub;
+                            }                            
                         }
-                        img {
-                            width: 100%;
+                        &_img {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            bottom: 0;
+                            right: 0;                         
+                            border: 10px solid $blue;
+                            height: 100%;
+                            overflow-y: auto;
+                            background: $blue;
+                            cursor: url(../../../assets/imgs/common/ico_scrl_01.svg),all-scroll;
+                            @include tab {
+                                border-width: 5px;
+                            }
+                            img {
+                                width: 100%;
+                            }
                         }
                     }
                 }
