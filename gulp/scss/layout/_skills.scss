@@ -195,7 +195,12 @@
                 @include firsttype(7) {
                     top: 50%;
                     left: 0;
-                }                                                                                                
+                } 
+                // #version-control
+                @include firsttype(8) {
+                    top: -11%;
+                    left: 37%;
+                }                                                                                                                
             }
         }    
         // OSコンテナー

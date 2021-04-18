@@ -118,6 +118,12 @@
 	}
 }
 
+@mixin sp-small {
+	@media screen and (max-width: $sp-small) {
+		@content;
+	}
+}
+
 @mixin dkt {
 	@media screen and (min-width: $dkt) {
 		@content;

@@ -31,12 +31,12 @@
                     $term_id = $term->term_id;
 
                     // 子タームを取得する
-                    $termchildren = get_term_children( $term_id, $taxonomy );
+                    $termchildren = get_terms($taxonomy, array('child_of' => $term_id, 'orderby' => 'none'));                    
 
-                    // 子タームがある場合
+                    // 子タームがある場合 - 管理画面で並び替え
                     if($termchildren):
                         foreach ( $termchildren as $child ): //その中で子タームを回す
-                            $termC = get_term_by( 'id' , $child, $taxonomy );
+                            $termC = get_term_by( 'id', $child->term_id, $taxonomy );
                             $term_link = get_term_link( $child );
                     
                             if( $termC->count != 0 ):
@@ -45,7 +45,7 @@
                                 <!-- .l-skills_term-child_block -->
                                 <article class="l-skills_term-child_block">
 
-                                    <h4 class="l-skills_term-child_ttl">#<?php echo $termC->name; ?></h4>
+                                    <h4 class="l-skills_term-child_ttl">#<?php echo esc_html($termC->name); ?></h4>
 
                                     <ul class="l-skills_list">
             
@@ -53,7 +53,9 @@
                                             $args = array(
                                                 'post_status' => 'publish',
                                                 'post_type' =>  'skills_post',
-                                                'posts_per_page' => -1,                                                                            
+                                                'posts_per_page' => -1,
+                                                'orderby' => 'menu_order', //ソートの基準
+                                                'order' => 'ASC', //DESC降順　ASC昇順                            
                                                 'tax_query' => array(
                                                     array(
                                                         'taxonomy' => $taxonomy,
@@ -134,7 +136,9 @@
                             $args = array(
                                 'post_status' => 'publish',
                                 'post_type' =>  'skills_post',
-                                'posts_per_page' => -1,                                                          
+                                'posts_per_page' => -1,             
+                                'orderby' => 'menu_order', //ソートの基準
+                                'order' => 'ASC', //DESC降順　ASC昇順      
                                 'tax_query' => array(
                                     array(
                                         'taxonomy' => $taxonomy,

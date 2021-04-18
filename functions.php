@@ -297,15 +297,6 @@ function my_tiny_mce_before_init( $init_array ) {
 add_filter( 'tiny_mce_before_init' , 'my_tiny_mce_before_init' );
 
 // ----------------------------
-//  メデイアライブラリでSVGファイルを表示させる
-// ----------------------------
-
-add_filter( 'manage_media_columns', function( $columns ) {
-    echo '<style>.media-icon img[src$=".svg"]{width:100%;}</style>';
-    return $columns;
-} );
-
-// ----------------------------
 //  ページャーの設定
 // ----------------------------  
 
