@@ -128,6 +128,9 @@
             justify-content: center;
             &__item {
                 margin: 0 25px;
+                @include tab {
+                    margin: 0 10px;
+                }
             }
         }
         &__circle {
@@ -137,6 +140,10 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
+            @include tab {
+                width: 30px;
+                height: 30px;
+            }
         }        
         &__num {
             > a {
@@ -160,6 +167,9 @@
 
         &__arw {
             align-self: flex-end;
+            @include tab {
+                transform: scale(.6);
+            }
             > a {
                 transition-duration: .2s;
                 position: relative;
