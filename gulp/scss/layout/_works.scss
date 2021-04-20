@@ -51,7 +51,8 @@
             }
             &_item {
                 @include tab {
-                    scroll-snap-align: center;            
+                    scroll-snap-align: center;     
+                    scroll-snap-stop: always;                           
                 }
             }
         }
@@ -488,6 +489,7 @@
                         flex-basis: 65%;
                         &.m-wide {
                             flex-basis: 100%;
+                            margin: 0 auto;
                         }
                         &:before {
                             padding-top: 56.25%;
@@ -497,6 +499,7 @@
                         flex-basis: 30%;
                         &.m-wide {
                             flex-basis: 30%;
+                            margin: 0 auto;
                         }                        
                         @include tab {
                             margin-bottom: 60px;
@@ -580,17 +583,46 @@
                 }
             }
             &_lower {
-                width: 90%;
+                width: 95%;
                 margin: 0 auto;
                 @include tab {
                     width: 100%;
                 }
                
-                > p {
+                &_item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;                    
                     @include not-last {
                         margin-bottom: 15px;
+                        @include tab {
+                            margin-bottom: 25px;
+                        }
                     }
-                   
+                    @include tab {
+                        display: block;
+                    }
+                }
+                &_lead {
+                    background: #fff;
+                    color: $blue;
+                    flex-basis: 23%;
+                    text-align: center;     
+                    font-size: 14px;
+                    border-radius: 4px;               
+                    @include tab {
+                        flex-basis: 100%;
+                        font-size: 16px;
+                        margin-bottom: 10px;
+                    }
+                }
+                &_cont {
+                    flex-basis: 72%;
+                    line-height: 1.75;
+                    letter-spacing: .05em;
+                    @include tab {
+                        flex-basis: 100%;
+                    }                    
                 }
             }
         }

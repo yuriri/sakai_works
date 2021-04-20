@@ -123,7 +123,7 @@ gulp.task('bs-reload', function (done) {
 gulp.task('default', gulp.series(gulp.parallel('sass', 'babel', 'images', 'bs-sync'), function () {
     gulp.watch('gulp/**/*.scss', gulp.task('sass'));
     gulp.watch('gulp/es6/*.es6', gulp.task('babel'));
-    gulp.watch( dir + '/**/*.+(jpg|jpeg|png|gif)', gulp.task('images'))
+    // gulp.watch( dir + '/**/*.+(jpg|jpeg|png|gif)', gulp.task('images'))
     // gulp.watch('./**/*.php', gulp.task('bs-reload'));
     // gulp.watch('./assets/css/scss/style.min.css', gulp.task('bs-reload'));
     // gulp.watch('./assets/js/script.min.js', gulp.task('bs-reload'));

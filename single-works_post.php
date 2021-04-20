@@ -29,6 +29,7 @@
                 $duration = get_field('duration');
                 $charge = get_field('charge');
                 $team = get_field('team');
+                $comment = get_field('comment');
             ?>
 
     <!-- .l-works_post_wrap -->
@@ -118,19 +119,34 @@
                 <?php if($duration || $charge || $team ): ?>
 
                     <!-- .l-works_post_info_lower -->
-                    <section class="l-works_post_info_lower">
+                    <ul class="l-works_post_info_lower">
 
                         <?php if($duration): ?>
-                            <p class="l-works_post_duration">制作期間 ー <?php echo $duration; ?></p>
+                            <li class="l-works_post_info_lower_item l-works_post_duration">
+                                <p class="l-works_post_info_lower_lead">制作期間</p>
+                                <p class="l-works_post_info_lower_cont"><?php echo $duration; ?></p>
+                            </li>
                         <?php endif; ?>
                         <?php if($charge): ?>
-                            <p class="l-works_post_charge">担当箇所 ー <?php echo $charge; ?></p>
+                            <li class="l-works_post_info_lower_item l-works_post_charge">
+                                <p class="l-works_post_info_lower_lead">担当箇所</p>
+                                <p class="l-works_post_info_lower_cont"><?php echo $charge; ?></p>
+                            </li>
                         <?php endif; ?>                                
                         <?php if($team): ?>
-                            <p class="l-works_post_team">チーム構成 ー <?php echo $team; ?></p>
+                            <li class="l-works_post_info_lower_item l-works_post_team">
+                                <p class="l-works_post_info_lower_lead">チーム構成</p>
+                                <p class="l-works_post_info_lower_cont"><?php echo $team; ?></p>
+                            </li>
+                        <?php endif; ?>
+                        <?php if($comment): ?>
+                            <li class="l-works_post_info_lower_item l-works_post_comment">
+                                <p class="l-works_post_info_lower_lead">コメント</p>
+                                <p class="l-works_post_info_lower_cont"><?php echo $comment; ?></p>
+                            </li>
                         <?php endif; ?>
 
-                    </section>
+                    </ul>
                     <!-- /.l-works_post_info_lower -->
 
                 <?php endif; ?>

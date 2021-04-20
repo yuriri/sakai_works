@@ -155,7 +155,7 @@ body:not(.l-home) {
                 position: relative;
                 height: 100%;
                 width: 50px;
-                height: 66px;
+                height: 55px;
                 span {
                     &.m-txt {
                         display: block;
@@ -278,14 +278,14 @@ body:not(.l-home) {
                 width: 80px;
                 height: 80px;
                 @include tab {
-                    width: 66px;
-                    height: 66px;
+                    width: 55px;
+                    height: 55px;
                 }
                 svg {
                     transform: scale(.7);
                     transform-origin: left top;
                     @include tab {
-                        transform: scale(.6);
+                        transform: scale(.5);
                     }
                 }
             }

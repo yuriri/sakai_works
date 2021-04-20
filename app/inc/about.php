@@ -20,7 +20,11 @@
             <div class="l-about_text"><?php the_content(); ?></div>
         <?php endwhile;endif; ?>
 
-        <button class="l-btn_scroll"><span>SCROLL</span><svg xmlns="http://www.w3.org/2000/svg" width="11.413" height="79.677"><path d="M.25 0v79.07l10.986-11.092" fill="none" stroke="#000" stroke-width=".5"/></svg></button>
+        <p class="l-btn_scroll">
+            <a href="<?php echo home_url('/'); ?>#js-works">
+                <span>SCROLL</span><svg xmlns="http://www.w3.org/2000/svg" width="11.413" height="79.677"><path d="M.25 0v79.07l10.986-11.092" fill="none" stroke="#000" stroke-width=".5"/></svg>
+            </a>
+        </p>
 
     </section>
     <!-- /.l-about_inr -->
